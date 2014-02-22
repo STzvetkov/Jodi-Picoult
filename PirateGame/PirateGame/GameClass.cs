@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
+using PirateGame.Ship;
+
 #endregion
 
 namespace PirateGame
@@ -14,16 +16,21 @@ namespace PirateGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Game
+    public class GameClass : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private static readonly int WINDOW_WIDTH = 800;
+        private static readonly int WINDOW_HEIGHT = 800;
+        private PlayerShip playerShip;
 
-        public Game1()
+        public GameClass()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
+            graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
         }
 
         /// <summary>
@@ -34,7 +41,7 @@ namespace PirateGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            
 
             base.Initialize();
         }
@@ -48,7 +55,7 @@ namespace PirateGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            playerShip = new PlayerShip(Content,"pirate_ship.jpg",WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2);
         }
 
         /// <summary>
@@ -57,7 +64,7 @@ namespace PirateGame
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         /// <summary>
@@ -67,10 +74,25 @@ namespace PirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if(Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                playerShip.Move(Keys.Up,WINDOW_WIDTH,WINDOW_HEIGHT);
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                playerShip.Move(Keys.Down, WINDOW_WIDTH, WINDOW_HEIGHT);
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                playerShip.Move(Keys.Left, WINDOW_WIDTH, WINDOW_HEIGHT);
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                playerShip.Move(Keys.Right, WINDOW_WIDTH, WINDOW_HEIGHT);
+            }
 
             base.Update(gameTime);
         }
@@ -83,7 +105,9 @@ namespace PirateGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            playerShip.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
