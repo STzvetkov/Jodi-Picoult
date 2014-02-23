@@ -39,9 +39,10 @@
     <Compile Include="GameClass.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDestroyable.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IUpgradable.cs" />
-    <Compile Include="MapObjects\Harbour.cs" />
+    <Compile Include="MapObjects\Continent.cs" />
     <Compile Include="MapObjects\LandObject.cs" />
     <Compile Include="MapObjects\MapObject.cs" />
     <Compile Include="MapObjects\SeaObject.cs" />
@@ -63,7 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\con1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\pirate_ship.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\waterMap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />

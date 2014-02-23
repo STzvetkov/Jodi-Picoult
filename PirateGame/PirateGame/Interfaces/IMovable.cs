@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PirateGame.Interfaces
 {
-    public interface IMovable
+    public interface IMovable:IDrawable
     {
         void Move(Keys key,int width, int height);
     }

@@ -45,11 +45,11 @@ namespace PirateGame.Ship
                     }
                     break;
                 case Keys.Right:
-                    if (this.rect.X == width - this.rect.Width - 1)
+                    if (this.rect.Right == height)
                     {
                         break;
                     }
-                    if (this.rect.X + (int)this.speed.X > width)
+                    if (this.rect.Right + (int)this.speed.X > width)
                     {
                         this.rect.X = width - this.rect.Width - 1;
                         break;
@@ -64,11 +64,11 @@ namespace PirateGame.Ship
                     }
                     break;
                 case Keys.Down:
-                    if (this.rect.Y == height - this.rect.Height - 1)
+                    if (this.rect.Bottom == height)
                     {
                         break;
                     }
-                    if (this.rect.Y + (int)this.speed.Y > height)
+                    if (this.rect.Bottom + (int)this.speed.Y > height)
                     {
                         this.rect.Y = height - this.rect.Height - 1;
                         break;
