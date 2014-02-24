@@ -3,7 +3,7 @@
   <Class Name="PirateGame.GameClass">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAQAEEAQCQAAAwEEAAAAAAAAAAAAEAggBAQAAAAAAAQ=</HashCode>
+      <HashCode>AAYAEEAQCQAAAwBEAAAAAAAAAAAQEAhuBAAAAAAAAAQ=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,9 +31,10 @@
   <Class Name="PirateGame.MapObjects.MapObject">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MapObjects\MapObject.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.SeaObject">
     <Position X="4.5" Y="3" Width="1.5" />
@@ -60,7 +61,7 @@
   <Class Name="PirateGame.Ship.Ship">
     <Position X="9" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAgAAAAAAJAAAAAAAAwAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAIAAAgAAAAAAJAAAAAAAAwAAAAAAAAAAAAA=</HashCode>
       <FileName>Ship\Ship.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -110,7 +111,7 @@
   <Interface Name="PirateGame.Interfaces.ICollidable" Collapsed="true">
     <Position X="18.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICollidable.cs</FileName>
     </TypeIdentifier>
   </Interface>
