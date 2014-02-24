@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework.Content;
+using PirateGame.Ship;
+
+namespace PirateGame.MapObjects
+{
+    public enum Coutries { Kenya, Oman, Somalia, Tanzania, Yemen };
+    public abstract class Settlement : LandObject
+    {
+        // fields
+        private List<PlayerShip> shipsOnDock = new List<PlayerShip>(); // this field remains hidden as it will be used only within methods of the class       
+
+        // constructors
+        public Settlement()
+            : this(1, 0, Coutries.Somalia)
+        { }
+        public Settlement(int startPopulation, int initialWealth, Coutries stCountry)
+            : base()
+        {
+            this.Population = startPopulation;
+            this.Wealth = initialWealth;
+            this.Country = stCountry;
+        }
+
+        // abstract methods
+        
+
+        // virtual methods
+        public virtual PlayerShip BuildShip(ContentManager content, string texture) // ship details to be added here
+        {
+            return new PlayerShip(content, texture, this.LocationX, this.LocationY);
+        }
+        public virtual PlayerShip SendShip(ContentManager content, string texture)
+        {
+            //this.shipsOnDock.Find();
+            return null;
+        }
+
+
+        // properties
+        public int Population { get; private set; }
+        public int Wealth { get; private set; }
+        public Coutries Country { get; set; }
+
+        
+    }
+}
