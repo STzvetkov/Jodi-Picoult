@@ -9,7 +9,6 @@ using PirateGame.Ship;
 
 namespace PirateGame.MapObjects
 {
-    public enum Coutries { Kenya, Oman, Somalia, Tanzania, Yemen };
 
     public abstract class Settlement : LandObject
     {
