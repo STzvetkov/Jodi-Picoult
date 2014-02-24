@@ -19,7 +19,9 @@ namespace PirateGame
         static void Main()
         {
             using (var game = new GameClass())
+            {
                 game.Run();
+            }
         }
     }
 #endif

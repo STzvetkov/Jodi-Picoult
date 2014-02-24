@@ -18,7 +18,8 @@ namespace PirateGame
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private static readonly int WINDOW_WIDTH = 800;
-        private static readonly int WINDOW_HEIGHT = 800;
+        private static readonly int WINDOW_HEIGHT = 600;
+        private KeyboardState oldKBState;
         private PlayerShip playerShip;
         
         //temporary
@@ -26,13 +27,26 @@ namespace PirateGame
         private Rectangle watermapRect;
         private Texture2D con1Tex;
         private Rectangle con1rect;
+        private Menu mainMenu;
+        private bool MainMenuIsOn;
         //temporary
+
         public GameClass() : base()
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             this.graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
             this.graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
+
+            this.IsMouseVisible = true;
+
+            mainMenu = new Menu(this, "Pirate Menu", this.OnToggleMainMenu);
+            
+            mainMenu.Visible = false;
+            mainMenu.Enabled = false;
+            this.MainMenuIsOn = false;
+
+            this.Components.Add(mainMenu);
         }
         
         /// <summary>
@@ -43,6 +57,17 @@ namespace PirateGame
         /// </summary>
         protected override void Initialize()
         {
+            this.Services.AddService(typeof(GraphicsDeviceManager), graphics);
+
+            // Create a new SpriteBatch, which can be used to draw textures.
+            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.Services.AddService(typeof(SpriteBatch), spriteBatch);
+
+            oldKBState = Keyboard.GetState();
+
+            mainMenu.MenuItems.Add(new MenuItem("Play", OnUnimplementedHandler));
+            mainMenu.MenuItems.Add(new MenuItem("Quit", OnExit));
+
             base.Initialize();
         }
         
@@ -52,9 +77,6 @@ namespace PirateGame
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-
             //temporary
             this.waterMapTexture = this.Content.Load<Texture2D>("waterMap");
             this.watermapRect = new Rectangle(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -72,7 +94,7 @@ namespace PirateGame
         /// </summary>
         protected override void UnloadContent()
         {
-            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+
         }
         
         /// <summary>
@@ -82,28 +104,36 @@ namespace PirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState newKBState = Keyboard.GetState();
+
+
+            if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))   // Toggle main menu
             {
-                this.Exit();
+                this.OnToggleMainMenu(this.mainMenu, null);
             }
-            
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+
+            if (this.MainMenuIsOn == false)                 // Process the input if the menu is off
             {
-                this.playerShip.Move(Keys.Up, WINDOW_WIDTH, WINDOW_HEIGHT);
+                if (newKBState.IsKeyDown(Keys.Up) && this.oldKBState.IsKeyUp(Keys.Up))
+                {
+                    this.playerShip.Move(Keys.Up, WINDOW_WIDTH, WINDOW_HEIGHT);
+                }
+                else if (newKBState.IsKeyDown(Keys.Down) && this.oldKBState.IsKeyUp(Keys.Down))
+                {
+                    this.playerShip.Move(Keys.Down, WINDOW_WIDTH, WINDOW_HEIGHT);
+                }
+                else if (newKBState.IsKeyDown(Keys.Left) && this.oldKBState.IsKeyUp(Keys.Left))
+                {
+                    this.playerShip.Move(Keys.Left, WINDOW_WIDTH, WINDOW_HEIGHT);
+                }
+                else if (newKBState.IsKeyDown(Keys.Right) && this.oldKBState.IsKeyUp(Keys.Right))
+                {
+                    this.playerShip.Move(Keys.Right, WINDOW_WIDTH, WINDOW_HEIGHT);
+                }
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                this.playerShip.Move(Keys.Down, WINDOW_WIDTH, WINDOW_HEIGHT);
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                this.playerShip.Move(Keys.Left, WINDOW_WIDTH, WINDOW_HEIGHT);
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                this.playerShip.Move(Keys.Right, WINDOW_WIDTH, WINDOW_HEIGHT);
-            }
-            
+
+            this.oldKBState = newKBState;
+
             base.Update(gameTime);
         }
         
@@ -123,6 +153,30 @@ namespace PirateGame
             this.spriteBatch.End();
             
             base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Toggles the main menu on and off
+        /// </summary>
+        /// <param name="menu">Menu object</param>
+        /// <param name="e">Not used</param>
+        public void OnToggleMainMenu(object menu, EventArgs e = null)
+        {
+            ((Menu)menu).Toggle();
+
+            // All other DrawableGameComponent.Enabled properties should be disabled here
+            // when the main menu is on
+            this.MainMenuIsOn = !this.MainMenuIsOn;
+        }
+
+        public void OnExit(object menu, EventArgs e = null)
+        {
+            this.Exit();
+        }
+
+        public void OnUnimplementedHandler(object menu, EventArgs e = null)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
