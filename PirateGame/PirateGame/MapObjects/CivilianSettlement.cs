@@ -8,9 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PirateGame.MapObjects
 {
-    public class TradeCenter:CivilianSettlement
+    public abstract class CivilianSettlement:Settlement
     {
-        public TradeCenter (ContentManager content, string texture, int x, int y, int width, int height)
+        // constructors
+
+        public CivilianSettlement (ContentManager content, string texture, int x, int y, int width, int height)
             : base(content, texture, x, y, width, height)
         {}
     }
