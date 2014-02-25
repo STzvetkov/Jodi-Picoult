@@ -20,7 +20,7 @@ namespace PirateGame.Ship
         {
             this.Texture = content.Load<Texture2D>(texture);
             this.rectangle = new Rectangle(x,y,40,40);
-            this.speed = new Vector2(5,5);
+            this.speed = new Vector2(1,1);
         }
 
         public Rectangle Rectangle
@@ -43,27 +43,25 @@ namespace PirateGame.Ship
             }
         }
 
-        public bool IsCollidedWith(MapObject obj)
-        {
-            // TODO: Implement this method
-            throw new NotImplementedException();
-        }
 
         public virtual void Move(Keys key, int width, int height, List<PirateGame.Interfaces.IDrawable> drawables)
         {
+            bool match = false;
+            Rectangle initial = new Rectangle(this.rectangle.X, this.rectangle.Y, this.rectangle.Width, this.rectangle.Height);
             foreach (var drawable in drawables)
             {
                 switch(key)
                 {
                     case Keys.Left:
-                        if (this.IsCollidedWith(drawable))
-                        {
-                            
-                        }
                         this.rectangle.X -= (int)this.speed.X;
                         if (this.IsCollidedWith(drawable))
                         {
-                            this.rectangle.X = drawable.Rectangle.Right + 1;
+                            this.rectangle = initial;
+                            while(this.IsCollidedWith(drawable))
+                            {
+                                this.rectangle.X += 1;
+                            }
+                            match = true;
                             break;
                         }
                         if (this.rectangle.X < 0)
@@ -72,6 +70,17 @@ namespace PirateGame.Ship
                         }
                         break;
                     case Keys.Right:
+                        this.rectangle.X += (int)this.speed.X;
+                        if (this.IsCollidedWith(drawable))
+                        {
+                            match = true;
+                            this.rectangle = initial;
+                            while (this.IsCollidedWith(drawable))
+                            {
+                                this.rectangle.X -= 1;
+                            }
+                            break;
+                        }
                         if (this.rectangle.Right == width)
                         {
                             break;
@@ -81,17 +90,18 @@ namespace PirateGame.Ship
                             this.rectangle.X = width - this.rectangle.Width - 1;
                             break;
                         }
-                        this.rectangle.X += (int)this.speed.X;
-                        if (this.IsCollidedWith(drawable))
-                        {
-                            this.rectangle.X = drawable.Rectangle.Left - 1;
-                        }
+                           
                         break;
                     case Keys.Up:
                         this.rectangle.Y -= (int)this.speed.Y;
                         if (this.IsCollidedWith(drawable))
                         {
-                            this.rectangle.Y = drawable.Rectangle.Bottom + 1;
+                            match = true;
+                            this.rectangle = initial;
+                            while (this.IsCollidedWith(drawable))
+                            {
+                                this.rectangle.Y += 1;
+                            }
                             break;
                         }
                         if (this.rectangle.Y < 0)
@@ -100,6 +110,17 @@ namespace PirateGame.Ship
                         }
                         break;
                     case Keys.Down:
+                        this.rectangle.Y += (int)this.speed.Y;
+                        if (this.IsCollidedWith(drawable))
+                        {
+                            match = true;
+                            this.rectangle = initial;
+                            while (this.IsCollidedWith(drawable))
+                            {
+                                this.rectangle.Y -= 1;
+                            }
+                            break;
+                        }
                         if (this.rectangle.Bottom == height)
                         {
                             break;
@@ -109,12 +130,12 @@ namespace PirateGame.Ship
                             this.rectangle.Y = height - this.rectangle.Height - 1;
                             break;
                         }
-                        this.rectangle.Y += (int)this.speed.Y;
-                        if (this.IsCollidedWith(drawable))
-                        {
-                            this.rectangle.Y = drawable.Rectangle.Y - 1;
-                        }
+                         
                         break;
+                }
+                if(match)
+                {
+                    return;
                 }
             }
         }
