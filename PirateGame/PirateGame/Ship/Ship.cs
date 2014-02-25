@@ -11,8 +11,10 @@ using PirateGame.MapObjects;
 
 namespace PirateGame.Ship
 {
-    public abstract class Ship : ICollidable
+    public abstract class Ship : ICollidable, IDestroyable
     {
+        private const int MaxHitpoints = 200;
+
         private Vector2 speed;
 
         private Rectangle rectangle;
@@ -24,6 +26,8 @@ namespace PirateGame.Ship
             this.speed = new Vector2(1,1);
             this.Weapons = Weapons.Basic;
             this.Hull = Hull.Basic;
+            this.IsDestroyed = false;
+            this.Hitpoints = MaxHitpoints;
         }
 
         public Rectangle Rectangle
@@ -36,7 +40,6 @@ namespace PirateGame.Ship
 
         public Texture2D Texture { get; private set; }
 
-        public int HitPoints { get; set; }
 
         public Weapons Weapons { get; set; }
 
@@ -49,6 +52,9 @@ namespace PirateGame.Ship
                 return this.rectangle.Center;
             }
         }
+
+        public int Hitpoints { get; private set;}
+        public bool IsDestroyed { get; private set; }
 
 
         public virtual void Move(Keys key, List<PirateGame.Interfaces.IDrawableCustom> drawables)
@@ -145,6 +151,12 @@ namespace PirateGame.Ship
                     return;
                 }
             }
+        }
+
+        public void TakeDamage(int damageCaused)
+        {
+            this.Hitpoints -= damageCaused;
+            this.IsDestroyed = this.Hitpoints <= 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)

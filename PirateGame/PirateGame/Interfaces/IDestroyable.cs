@@ -7,5 +7,10 @@ namespace PirateGame.Interfaces
 {
     interface IDestroyable
     {
+        int Hitpoints { get; }
+        bool IsDestroyed { get; }
+
+        void TakeDamage(int damageCaused);
+
     }
 }

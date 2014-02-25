@@ -31,7 +31,7 @@
   <Class Name="PirateGame.MapObjects.MapObject">
     <Position X="25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAIAAAACAAAgAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MapObjects\MapObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -122,13 +122,6 @@
       <FileName>MapObjects\CivilianSettlement.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PirateGame.MapObjects.Constants">
-    <Position X="31" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAAA=</HashCode>
-      <FileName>MapObjects\Constants.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PirateGame.MapObjects.FishingVillage">
     <Position X="23" Y="20.25" Width="1.5" />
     <TypeIdentifier>
@@ -153,7 +146,7 @@
   <Class Name="PirateGame.MapObjects.Settlement">
     <Position X="28.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAEAAAAAAAIAAAAAAEAAEIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAAQAAAEAAAAAAAIAAAAAAEAAEIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Settlement.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -247,20 +240,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="PirateGame.MapObjects.Coutries">
-    <Position X="33.25" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAAAAAAACAAAAAAAAAAAAAAAQBAAAAAAQAAAAAAA=</HashCode>
-      <FileName>MapObjects\Constants.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="PirateGame.MapObjects.ProductionGoods">
-    <Position X="35.5" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAgAIAAAAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MapObjects\Constants.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Tahoma" Size="8.25" />
