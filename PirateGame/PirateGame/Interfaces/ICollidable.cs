@@ -9,6 +9,6 @@ namespace PirateGame.Interfaces
 {
     interface ICollidable:IMovable
     {
-        bool IsCollidedWith(PirateGame.Interfaces.IDrawable obj);
+        bool IsCollidedWith(PirateGame.Interfaces.IDrawableCustom obj);
     }
 }

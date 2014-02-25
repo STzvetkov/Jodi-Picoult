@@ -7,8 +7,8 @@ using System.Text;
 
 namespace PirateGame.Interfaces
 {
-    public interface IMovable:IDrawable
+    public interface IMovable:IDrawableCustom
     {
-        void Move(Keys key, List<PirateGame.Interfaces.IDrawable> drawables);
+        void Move(Keys key, List<IDrawableCustom> drawables);
     }
 }

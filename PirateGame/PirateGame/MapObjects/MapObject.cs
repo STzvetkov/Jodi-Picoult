@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace PirateGame.MapObjects
 {
-    public abstract class MapObject:PirateGame.Interfaces.IDrawable
+    public abstract class MapObject:PirateGame.Interfaces.IDrawableCustom
     {
         private int locationX;
         private int locationY;

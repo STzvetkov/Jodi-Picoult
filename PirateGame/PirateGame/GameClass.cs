@@ -28,7 +28,7 @@ namespace PirateGame
         private Continent continent1;
         private Continent continent2;
         private Continent continent3;
-        private List<PirateGame.Interfaces.IDrawable> continents;
+        private List<PirateGame.Interfaces.IDrawableCustom> continents;
         List<string> messages;
         private Popup p;
 
@@ -89,7 +89,7 @@ namespace PirateGame
             this.continent2 = new Continent(this.Content, "con2", 40, 40, 300, 300);
             this.continent3 = new Continent(this.Content, "con3", 40, 300, 300, 300);
             this.playerShip = new PlayerShip(this.Content, "pirate_ship", GlobalConstants.WINDOW_WIDTH / 2, GlobalConstants.WINDOW_HEIGHT / 2);
-            this.continents = new List<PirateGame.Interfaces.IDrawable>
+            this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
                 this.continent1,
                 this.continent2,

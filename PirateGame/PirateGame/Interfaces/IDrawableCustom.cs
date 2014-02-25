@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PirateGame.Interfaces
 {
-    public interface IDrawable
+    public interface IDrawableCustom
     {
         Rectangle Rectangle { get; }
 

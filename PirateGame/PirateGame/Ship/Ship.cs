@@ -51,7 +51,7 @@ namespace PirateGame.Ship
         }
 
 
-        public virtual void Move(Keys key, List<PirateGame.Interfaces.IDrawable> drawables)
+        public virtual void Move(Keys key, List<PirateGame.Interfaces.IDrawableCustom> drawables)
         {
             bool match = false;
             Rectangle initial = new Rectangle(this.rectangle.X, this.rectangle.Y, this.rectangle.Width, this.rectangle.Height);
@@ -152,7 +152,7 @@ namespace PirateGame.Ship
             spriteBatch.Draw(this.Texture, this.rectangle, Color.White);
         }
 
-        public bool IsCollidedWith(PirateGame.Interfaces.IDrawable obj)
+        public bool IsCollidedWith(PirateGame.Interfaces.IDrawableCustom obj)
         {
             int top = Math.Max(this.rectangle.Top, obj.Rectangle.Top);
             int bottom = Math.Min(this.rectangle.Bottom, obj.Rectangle.Bottom);

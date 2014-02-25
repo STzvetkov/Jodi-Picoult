@@ -41,7 +41,7 @@
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDestroyable.cs" />
-    <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IDrawableCustom.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IUpgradable.cs" />
     <Compile Include="MapObjects\Airfield.cs" />

@@ -3,7 +3,7 @@
   <Class Name="PirateGame.GameClass">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAEEAQCQAAAwBEAAAAAAAAAAAQEAhuBAAAAAAAAAQ=</HashCode>
+      <HashCode>AAYAEEAQAAAAAwBEAAAACAAAAAAQEAhvBEAAAAAAAAQ=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,7 +31,7 @@
   <Class Name="PirateGame.MapObjects.MapObject">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAACAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MapObjects\MapObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -61,7 +61,7 @@
   <Class Name="PirateGame.Ship.Ship">
     <Position X="9" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAIAAAgAAAAAAJAAAAAAAAwAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AoAAAAAAAIAAAgAAAAAABCAAAAAgAwAAAAIAAAAAABA=</HashCode>
       <FileName>Ship\Ship.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -122,13 +122,6 @@
       <FileName>Interfaces\IDestroyable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="PirateGame.Interfaces.IDrawable">
-    <Position X="9" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Interfaces\IDrawable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="PirateGame.Interfaces.IMovable">
     <Position X="9" Y="1.75" Width="1.5" />
     <TypeIdentifier>
@@ -141,6 +134,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Interfaces\IUpgradable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PirateGame.Interfaces.IDrawableCustom">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDrawableCustom.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Tahoma" Size="8.25" />
