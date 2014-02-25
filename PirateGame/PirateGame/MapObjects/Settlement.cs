@@ -17,13 +17,15 @@ namespace PirateGame.MapObjects
 
         // constructors
         public Settlement(ContentManager content, string texture, int x, int y, int width, int height)
-            : this(1, 0, Coutries.Somalia, content, texture, x, y, width, height)
+            : this(1, 0, 1, Coutries.Somalia, content, texture, x, y, width, height)
         { }
 
-        public Settlement(int startPopulation, int initialWealth, Coutries stCountry, ContentManager content, string texture, int x, int y, int width, int height):base(content, texture, x, y, width, height)
+        public Settlement(int startPopulation, int initialWealth, int defence, Coutries stCountry, 
+            ContentManager content, string texture, int x, int y, int width, int height):base(content, texture, x, y, width, height)
         {
             this.Population = startPopulation;
             this.Wealth = initialWealth;
+            this.DefencePower = defence;
             this.Country = stCountry;
         }
 
@@ -45,6 +47,7 @@ namespace PirateGame.MapObjects
         // properties
         public int Population { get; private set; }
         public int Wealth { get; private set; }
+        public int DefencePower { get; private set; }
         public Coutries Country { get; set; }
 
         
