@@ -24,9 +24,10 @@
   <Class Name="PirateGame.MapObjects.LandObject">
     <Position X="26" Y="11.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>MapObjects\LandObject.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.MapObject">
     <Position X="25" Y="8" Width="1.5" />
@@ -61,7 +62,7 @@
   <Class Name="PirateGame.Ship.Ship">
     <Position X="12" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AoAAAAAAAIAAAgAAAAAABCAAAAAgAwAAAAIAAAAAABA=</HashCode>
+      <HashCode>AoAAAAAAAIAAAgAQAAAAACAAAAQgAwAAAAIAgAAQABA=</HashCode>
       <FileName>Ship\Ship.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -196,7 +197,7 @@
   <Interface Name="PirateGame.Interfaces.IDestroyable">
     <Position X="15.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Interfaces\IDestroyable.cs</FileName>
     </TypeIdentifier>
   </Interface>
