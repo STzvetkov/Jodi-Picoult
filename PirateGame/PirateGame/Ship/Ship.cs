@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PirateGame.Enums;
 using PirateGame.Interfaces;
 using PirateGame.MapObjects;
 
@@ -21,6 +22,8 @@ namespace PirateGame.Ship
             this.Texture = content.Load<Texture2D>(texture);
             this.rectangle = new Rectangle(x,y,40,40);
             this.speed = new Vector2(1,1);
+            this.Weapons = Weapons.Basic;
+            this.Hull = Hull.Basic;
         }
 
         public Rectangle Rectangle
@@ -35,6 +38,10 @@ namespace PirateGame.Ship
 
         public int HitPoints { get; set; }
 
+        public Weapons Weapons { get; set; }
+
+        public Hull Hull { get; set; }
+
         public Point CurrentPosition
         {
             get
@@ -44,7 +51,7 @@ namespace PirateGame.Ship
         }
 
 
-        public virtual void Move(Keys key, int width, int height, List<PirateGame.Interfaces.IDrawable> drawables)
+        public virtual void Move(Keys key, List<PirateGame.Interfaces.IDrawable> drawables)
         {
             bool match = false;
             Rectangle initial = new Rectangle(this.rectangle.X, this.rectangle.Y, this.rectangle.Width, this.rectangle.Height);
@@ -81,13 +88,13 @@ namespace PirateGame.Ship
                             }
                             break;
                         }
-                        if (this.rectangle.Right == width)
+                        if (this.rectangle.Right == GlobalConstants.WINDOW_WIDTH)
                         {
                             break;
                         }
-                        if (this.rectangle.Right + (int)this.speed.X > width)
+                        if (this.rectangle.Right + (int)this.speed.X > GlobalConstants.WINDOW_WIDTH)
                         {
-                            this.rectangle.X = width - this.rectangle.Width - 1;
+                            this.rectangle.X = GlobalConstants.WINDOW_WIDTH - this.rectangle.Width - 1;
                             break;
                         }
                            
@@ -121,13 +128,13 @@ namespace PirateGame.Ship
                             }
                             break;
                         }
-                        if (this.rectangle.Bottom == height)
+                        if (this.rectangle.Bottom == GlobalConstants.WINDOW_HEIGHT)
                         {
                             break;
                         }
-                        if (this.rectangle.Bottom + (int)this.speed.Y > height)
+                        if (this.rectangle.Bottom + (int)this.speed.Y > GlobalConstants.WINDOW_HEIGHT)
                         {
-                            this.rectangle.Y = height - this.rectangle.Height - 1;
+                            this.rectangle.Y = GlobalConstants.WINDOW_HEIGHT - this.rectangle.Height - 1;
                             break;
                         }
                          

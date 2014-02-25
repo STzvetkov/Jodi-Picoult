@@ -9,6 +9,6 @@ namespace PirateGame.Interfaces
 {
     public interface IMovable:IDrawable
     {
-        void Move(Keys key,int width, int height, List<PirateGame.Interfaces.IDrawable> drawables);
+        void Move(Keys key, List<PirateGame.Interfaces.IDrawable> drawables);
     }
 }
