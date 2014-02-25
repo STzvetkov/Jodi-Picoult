@@ -46,7 +46,6 @@
     <Compile Include="Interfaces\IUpgradable.cs" />
     <Compile Include="MapObjects\Airfield.cs" />
     <Compile Include="MapObjects\CivilianSettlement.cs" />
-    <Compile Include="MapObjects\Constants.cs" />
     <Compile Include="MapObjects\Continent.cs" />
     <Compile Include="MapObjects\FishingVillage.cs" />
     <Compile Include="MapObjects\LandObject.cs" />

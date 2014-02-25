@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using PirateGame.Ship;
+using PirateGame.Enums;
 
 namespace PirateGame.MapObjects
 {

@@ -20,6 +20,8 @@ namespace PirateGame.MapObjects
         {
             this.Texture = content.Load<Texture2D>(texture);
             this.Rectangle = new Rectangle(x,y,width,height);
+            this.LocationX = x;
+            this.LocationY = y;
         }
 
 
@@ -32,26 +34,14 @@ namespace PirateGame.MapObjects
         public int LocationX
         {
             get { return this.locationX; }
-            set
-            {
-                if (value < 0 || value > Constants.MapSizeX)
-                {
-                    throw new IndexOutOfRangeException("The provided coordinates aren't within the map!");
-                }
-                this.locationX = value;
-            }
+            private set
+            { this.locationX = value; }
         }
         public int LocationY
         {
             get { return this.locationY; }
-            set
-            {
-                if (value < 0 || value > Constants.MapSizeY)
-                {
-                    throw new IndexOutOfRangeException("The provided coordinates aren't within the map!");
-                }
-                this.locationY = value;
-            }
+            private set
+            { this.locationY = value; }
         }
     }
 }

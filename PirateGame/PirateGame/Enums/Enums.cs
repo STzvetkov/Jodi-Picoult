@@ -25,4 +25,20 @@ namespace PirateGame.Enums
         Left,
         Right
     }
+
+    public enum Coutries 
+    { 
+        Kenya, 
+        Oman, 
+        Somalia, 
+        Tanzania, 
+        Yemen 
+    };
+    public enum ProductionGoods 
+    { 
+        Fish, 
+        Oil, 
+        Fruits, 
+        Cereals 
+    };
 }
