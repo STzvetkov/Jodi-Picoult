@@ -10,8 +10,6 @@ namespace PirateGame.MapObjects
 {
     public abstract class MapObject:PirateGame.Interfaces.IDrawableCustom
     {
-        private int locationX;
-        private int locationY;
         public Rectangle Rectangle { get; private set; }
 
         public Texture2D Texture { get;private set; }
@@ -31,17 +29,7 @@ namespace PirateGame.MapObjects
         }
 
         // properties
-        public int LocationX
-        {
-            get { return this.locationX; }
-            private set
-            { this.locationX = value; }
-        }
-        public int LocationY
-        {
-            get { return this.locationY; }
-            private set
-            { this.locationY = value; }
-        }
+        public int LocationX {get; private set;}
+        public int LocationY {get; private set;}
     }
 }
