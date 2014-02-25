@@ -1,4 +1,4 @@
-﻿namespace PirateGame
+﻿namespace PirateGame.UserInterface
 {
     using System;
 

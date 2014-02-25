@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using PirateGame.MapObjects;
 using PirateGame.Popups;
 using PirateGame.Ship;
+using PirateGame.UserInterface;
 
 #endregion
 
@@ -49,11 +50,7 @@ namespace PirateGame
             
             this.mainMenu = new Menu(this, "Pirate Menu", this.OnToggleMainMenu);
             
-            this.mainMenu.Visible = false;
-            this.mainMenu.Enabled = false;
             this.MainMenuIsOn = false;
-            
-            this.Components.Add(this.mainMenu);
         }
         
         /// <summary>
@@ -71,8 +68,8 @@ namespace PirateGame
             this.Services.AddService(typeof(SpriteBatch), this.spriteBatch);
             
             this.oldKBState = Keyboard.GetState();
-            
-            this.mainMenu.MenuItems.Add(new MenuItem("Play", this.OnUnimplementedHandler));
+
+            this.mainMenu.MenuItems.Add(new MenuItem("Play", this.OnPlay));
             this.mainMenu.MenuItems.Add(new MenuItem("Quit", this.OnExit));
             base.Initialize();
         }
@@ -118,49 +115,49 @@ namespace PirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState newKBState = Keyboard.GetState();
+
             bool mouseOverShip = playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
 
-            if (mouseOverShip || Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+            if (mouseOverShip || newKBState.IsKeyDown(Keys.LeftControl))
             {
                 p.IsVisible = true;
-                
-            }else
+            }
+            else
             {
                 p.IsVisible = false;
             }
 
-            KeyboardState newKBState = Keyboard.GetState();
-            
             if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))   // Toggle main menu
             {
                 this.OnToggleMainMenu(this.mainMenu, null);
             }
-            
+
             if (this.MainMenuIsOn == false)                 // Process the input if the menu is off
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                if (newKBState.IsKeyDown(Keys.Up))
                 {
                     this.playerShip.Move(Keys.Up, this.continents);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                else if (newKBState.IsKeyDown(Keys.Down))
                 {
                     this.playerShip.Move(Keys.Down, this.continents);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                else if (newKBState.IsKeyDown(Keys.Left))
                 {
                     this.playerShip.Move(Keys.Left, this.continents);
                 }
-                else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                else if (newKBState.IsKeyDown(Keys.Right))
                 {
                     this.playerShip.Move(Keys.Right, this.continents);
                 }
             }
-            
+
             this.oldKBState = newKBState;
-            
+
             base.Update(gameTime);
         }
-        
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -168,7 +165,7 @@ namespace PirateGame
         protected override void Draw(GameTime gameTime)
         {
             this.GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             this.spriteBatch.Begin();
             this.spriteBatch.Draw(this.waterMapTexture, this.watermapRect, Color.White);
             this.continent1.Draw(this.spriteBatch);
@@ -180,7 +177,7 @@ namespace PirateGame
 
             base.Draw(gameTime);
         }
-        
+
         /// <summary>
         /// Toggles the main menu on and off
         /// </summary>
@@ -188,24 +185,22 @@ namespace PirateGame
         /// <param name="e">Not used</param>
         public void OnToggleMainMenu(object menu, EventArgs e = null)
         {
-            ((Menu)menu).Toggle();
-            
+            ((Menu)menu).ToggleActive();
+
             // All other DrawableGameComponent.Enabled properties should be disabled here
             // when the main menu is on
             this.MainMenuIsOn = !this.MainMenuIsOn;
         }
-        
-        public void OnExit(object menu, EventArgs e = null)
+
+        public void OnExit(object menuItem, EventArgs e = null)
         {
             this.Exit();
         }
-        
-        public void OnUnimplementedHandler(object menu, EventArgs e = null)
+
+        public void OnPlay(object menuItem, EventArgs e = null)
         {
-            throw new System.NotImplementedException();
+            this.OnToggleMainMenu(this.mainMenu);
         }
-
-
 
     }
 }

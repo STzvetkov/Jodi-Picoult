@@ -39,6 +39,8 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="GameClass.cs" />
     <Compile Include="GlobalConstants.cs" />
+    <Compile Include="UserInterface\Inventory.cs" />
+    <Compile Include="UserInterface\HealthBar.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDestroyable.cs" />
     <Compile Include="Interfaces\IDrawableCustom.cs" />
@@ -58,8 +60,8 @@
     <Compile Include="MapObjects\Settlement.cs" />
     <Compile Include="MapObjects\TradeCenter.cs" />
     <Compile Include="MapObjects\Wreckage.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="MenuItem.cs" />
+    <Compile Include="UserInterface\Menu.cs" />
+    <Compile Include="UserInterface\MenuItem.cs" />
     <Compile Include="Popups\Popup.cs" />
     <Compile Include="Ship\PlayerShip.cs" />
     <Compile Include="Program.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Upgrades\HullUpgrade.cs" />
     <Compile Include="Upgrades\Upgrade.cs" />
     <Compile Include="Upgrades\WeaponUpgrade.cs" />
+    <Compile Include="UserInterface\UserInterfaceElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -111,6 +114,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -96,7 +96,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Menu">
-    <Position X="6.5" Y="11.75" Width="1.5" />
+    <Position X="6.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQIAAAAUEogE1BCAAAAAAAAAAAAAAAACAAEAAAAAAQ=</HashCode>
       <FileName>UserInterface\Menu.cs</FileName>
@@ -123,6 +123,7 @@
       <FileName>MapObjects\CivilianSettlement.cs</FileName>
     </TypeIdentifier>
   </Class>
+    <Position X="35" Y="12.75" Width="1.5" />
   <Class Name="PirateGame.MapObjects.FishingVillage">
     <Position X="27" Y="20.25" Width="1.5" />
     <TypeIdentifier>
@@ -189,14 +190,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.UserInterface.HealthBar">
-    <Position X="1.5" Y="11.75" Width="1.5" />
+    <Position X="1.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserInterface\HealthBar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Inventory">
-    <Position X="4" Y="11.75" Width="1.5" />
+    <Position X="4" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserInterface\Inventory.cs</FileName>
@@ -258,5 +259,7 @@
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
+    <Position X="37.25" Y="12.75" Width="1.5" />
+    <Position X="39.5" Y="12.75" Width="1.5" />
   <Font Name="Tahoma" Size="8.25" />
 </ClassDiagram>
