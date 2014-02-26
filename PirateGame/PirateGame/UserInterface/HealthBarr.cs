@@ -19,8 +19,8 @@
             position = new Vector2(10, 10);
             LoadContent(content);
             fullHealth = lifeBar.Width;
-            currentHealth = fullHealth;
-            reteOfChange = 1;
+            currentHealth = 50;
+            reteOfChange = 0;
         }
 
         private void LoadContent(ContentManager content)
