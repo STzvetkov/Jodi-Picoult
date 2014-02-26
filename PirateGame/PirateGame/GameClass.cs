@@ -136,7 +136,7 @@ namespace PirateGame
             this.tradeCenter1 = new TradeCenter(5000, 50, 100000, 800, 6000, 50, Coutries.Yemen,
                                                 this.Content, "trade_center", 100, 470, 128, 128);
             // add military settlement
-            this.militaryPort1 = new MilitaryPort(this.Content, "military_settlement", 180, 310, 128, 128);            
+            this.militaryPort1 = new MilitaryPort(0, 200, 150, 500, 800, 300, Coutries.Yemen, this.Content, "military_settlement", 180, 310, 128, 128);            
 
             this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
