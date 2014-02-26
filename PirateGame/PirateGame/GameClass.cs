@@ -34,6 +34,7 @@ namespace PirateGame
         private Continent continent3;
         private FishingVillage fishingVillage1;
         private TradeCenter tradeCenter1;
+        private MilitaryPort militaryPort1;
         private List<PirateGame.Interfaces.IDrawableCustom> continents;
         private List<string> messages;
         private Popup p;
@@ -127,6 +128,8 @@ namespace PirateGame
             // add trade center
             this.tradeCenter1 = new TradeCenter(5000, 50, 100000, 800, 6000, 50, Coutries.Yemen,
                                                 this.Content, "trade_center", 100, 470, 128, 128);
+            // add military settlement
+            this.militaryPort1 = new MilitaryPort(this.Content, "military_settlement", 180, 310, 128, 128);            
 
             this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
@@ -254,6 +257,7 @@ namespace PirateGame
                     this.continent3.Draw(this.spriteBatch);
                     this.fishingVillage1.Draw(spriteBatch);
                     this.tradeCenter1.Draw(spriteBatch);
+                    this.militaryPort1.Draw(spriteBatch);
                     this.playerShip.Draw(this.spriteBatch);
                     this.p.Draw(this.spriteBatch);
                     foreach (var item in this.npcs)

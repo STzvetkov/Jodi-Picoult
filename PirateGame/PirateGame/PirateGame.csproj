@@ -109,6 +109,9 @@
     <Content Include="Content\lifeBar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\military_settlement.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\pirate_ship.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
