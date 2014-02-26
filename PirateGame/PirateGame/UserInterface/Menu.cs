@@ -25,13 +25,17 @@
         public Menu(Game game, string title, EventHandler showMenuHandler = null, EventHandler hideMenuHandler = null)
             : base(game, showMenuHandler, hideMenuHandler)
         {
-            this.Enabled = false;                               // Disable Update()
-            this.Visible = false;                               // Disable Draw()
+            this.Hide();                                        // Disable this UI Element
             this.Items = new List<SelectableItem<string>>();    // Create the menu list
             this.Title = title;
             this.highlightPosition = 0;
 
-            game.Components.Add(this);
+            //this.Game.Components.Add(this);
+        }
+
+        ~Menu()
+        {
+            //this.Game.Components.Remove(this);
         }
 
         public IList<SelectableItem<string>> Items { get; private set; }
@@ -70,16 +74,21 @@
             this.oldKBState = Keyboard.GetState();
         }
 
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             base.LoadContent();
-            this.menuFont = (SpriteFont)Game.Content.Load<SpriteFont>("Arial");
-            this.Background = Game.Content.Load<Texture2D>("StoneBackground");
+            this.menuFont = this.Game.Content.Load<SpriteFont>("Arial");
+            this.Background = this.Game.Content.Load<Texture2D>("StoneBackground");
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            base.Draw(spriteBatch);
+
+            if ((this.Visible == false) || (spriteBatch == null))
+            {
+                return;
+            }
 
             // If draw rectangle isn't set, set it to the middle of the window
             if (this.Rectangle.IsEmpty)
@@ -109,8 +118,6 @@
                 itemPosition.Y += Menu.ItemsHeight;
                 spriteBatch.DrawString(this.menuFont, this.Items[index].Item, itemPosition, color);
             }
-
-            spriteBatch.End();
         }
 
         public override void Update(GameTime gameTime)

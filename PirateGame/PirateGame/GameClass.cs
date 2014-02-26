@@ -51,8 +51,9 @@ namespace PirateGame
         private HealthBarr healthBar;
         
         //Menu system
-        private Menu mainMenu;
         private int openMenusCount;
+        private Menu mainMenu;
+        private List<UserInterfaceElement> UIElements;
         
         public GameClass() : base()
         {
@@ -62,9 +63,11 @@ namespace PirateGame
             this.graphics.PreferredBackBufferHeight = GlobalConstants.WINDOW_HEIGHT;
             
             this.IsMouseVisible = true;
-            
+
+            this.UIElements = new List<UserInterfaceElement>();
             this.mainMenu = new Menu(this, "Pirate Menu", this.OnOpenMenu, this.OnCloseMenu);
-            
+            UIElements.Add(this.mainMenu);
+
             this.openMenusCount = 0;
         }
         
@@ -104,7 +107,14 @@ namespace PirateGame
             
             this.mainMenu.Items.Add(new SelectableItem<string>("Play", this.OnPlay));
             this.mainMenu.Items.Add(new SelectableItem<string>("Test Inventory", this.OnInventoryTest));
+            this.mainMenu.Items.Add(new SelectableItem<string>("Test Health Bar", this.OnHealthBarTest));
             this.mainMenu.Items.Add(new SelectableItem<string>("Quit", this.OnExit));
+
+            for (int index = 0; index < UIElements.Count; index++)
+            {
+                UIElements[index].Initialize();
+            }
+
             base.Initialize();
         }
         
@@ -180,6 +190,11 @@ namespace PirateGame
             this.fishingPopup = new Popup(this.Content, "popup_background", "Arial", this.fishingMessages, this.fishingVillage1);
             this.tradePopup = new Popup(this.Content, "popup_background", "Arial", this.tradeMessages, this.tradeCenter1);
             this.militaryPopup = new Popup(this.Content, "popup_background", "Arial", this.militaryMessages, this.militaryPort1);
+
+            for (int index = 0; index < UIElements.Count; index++)
+            {
+                UIElements[index].LoadContent();
+            }
         }
         
         /// <summary>
@@ -300,6 +315,12 @@ namespace PirateGame
                     break;
             }
             healthBar.Update();
+
+            for (int index = 0; index < UIElements.Count; index++)
+            {
+                UIElements[index].Update(gameTime);
+            }
+
             base.Update(gameTime);
         }
         
@@ -357,6 +378,12 @@ namespace PirateGame
                 default:
                     break;
             }
+
+            for (int index = 0; index < UIElements.Count; index++)
+            {
+                UIElements[index].Draw(this.spriteBatch);
+            }
+
             healthBar.Draw(spriteBatch);
             this.spriteBatch.End();
             
@@ -408,6 +435,8 @@ namespace PirateGame
             this.mainMenu.Hide();
             
             Inventory test = new Inventory(this);
+            test.Initialize();
+            test.LoadContent();
             
             // TODO: remove the test
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnExit));
@@ -415,7 +444,24 @@ namespace PirateGame
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, this.OnExit));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
+
+            this.UIElements.Add(test);
             
+            test.Show();
+        }
+
+        private void OnHealthBarTest(object menuItem, EventArgs e = null)
+        {
+            this.mainMenu.Hide();                           // TODO: remove the test
+
+            HealthBar test = new HealthBar(this, HealthBar.UpdateHealthTest);
+            test.Initialize();
+            test.LoadContent();
+
+            this.UIElements.Add(test);
+
+            test.Rectangle = new Rectangle(50, 50, 200, 50);
+
             test.Show();
         }
         

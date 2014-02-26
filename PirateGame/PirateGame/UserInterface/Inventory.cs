@@ -22,12 +22,16 @@
         public Inventory(Game game, EventHandler showInventoryHandler = null, EventHandler hideInventoryHandler = null)
             : base(game, showInventoryHandler, hideInventoryHandler)
         {
-            this.Enabled = false;                                       // Disable Update()
-            this.Visible = false;                                       // Disable Draw()
+            this.Hide();                                                // Disable this UI Element
             this.Items = new List<SelectableItem<IDrawableCustom>>();   // Create the inventory list
             this.highlightIndex = 0;
 
-            game.Components.Add(this);
+            //this.Game.Components.Add(this);
+        }
+
+        ~Inventory()
+        {
+            //this.Game.Components.Remove(this);
         }
 
         public IList<SelectableItem<IDrawableCustom>> Items;
@@ -44,7 +48,7 @@
             }
         }
 
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             base.LoadContent();
             this.HighlightTexture = Game.Content.Load<Texture2D>("InventoryHighlight.png");
@@ -53,7 +57,13 @@
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            base.Draw(spriteBatch);
+
+            if ((this.Visible == false) || (spriteBatch == null))
+            {
+                return;
+            }
+
             // If draw rectangle isn't set, set it to the middle of the window
             if (this.Rectangle.IsEmpty)
             {
@@ -80,8 +90,6 @@
                 }
                 itemPosition.X += this.HighlightTexture.Width + Inventory.ItemSpacing;
             }
-            spriteBatch.End();
-
         }
 
 

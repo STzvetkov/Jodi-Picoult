@@ -37,17 +37,22 @@
             base.Initialize();
         }
 
-        public virtual Rectangle Rectangle { get; protected set; }
+        public virtual Rectangle Rectangle { get; set; }
         public virtual Texture2D Texture { get; protected set; }
 
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
 
+            this.SpriteBatch.Begin();
             Draw(this.SpriteBatch);
+            this.SpriteBatch.End();
         }
 
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            
+        }
 
         public virtual void Hide()
         {
@@ -81,6 +86,9 @@
             }
         }
 
-        
+        public virtual void LoadContent()
+        {
+            base.LoadContent();
+        }
     }
 }
