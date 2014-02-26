@@ -61,7 +61,6 @@
     <Compile Include="MapObjects\TradeCenter.cs" />
     <Compile Include="MapObjects\Wreckage.cs" />
     <Compile Include="UserInterface\Menu.cs" />
-    <Compile Include="UserInterface\MenuItem.cs" />
     <Compile Include="Popups\Popup.cs" />
     <Compile Include="Ship\PlayerShip.cs" />
     <Compile Include="Program.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Upgrades\HullUpgrade.cs" />
     <Compile Include="Upgrades\Upgrade.cs" />
     <Compile Include="Upgrades\WeaponUpgrade.cs" />
+    <Compile Include="UserInterface\SelectableItem.cs" />
     <Compile Include="UserInterface\UserInterfaceElement.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +94,9 @@
     <Content Include="Content\con4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\InventoryHighlight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\pirate_ship.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -101,6 +104,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\StoneBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\StoneBackgroundHorizontal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\waterMap.png">

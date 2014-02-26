@@ -3,7 +3,7 @@
   <Class Name="PirateGame.GameClass">
     <Position X="9" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAEEAQAAAAAwBEAAAACAABAAAQEAgvBEAAAAAAAAQ=</HashCode>
+      <HashCode>AAQAEEAQAAAAAwBAAAAACIABIAAQEAgvBEIAAAAAAAY=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -96,17 +96,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Menu">
-    <Position X="6.5" Y="11.75" Width="1.5" />
+    <Position X="6.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQIAAAAUEogE1BCAAAAAAAAAAAAAAAACAAEAAAAAAQ=</HashCode>
+      <HashCode>AAQIAAAAUEogC0BCAAAAAAAAAAAEAAAAAAAkAAAAAAQ=</HashCode>
       <FileName>UserInterface\Menu.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PirateGame.UserInterface.MenuItem">
-    <Position X="6.5" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAEQAAAAAAAAAAAAAAAAAAABAQAAAAAA=</HashCode>
-      <FileName>UserInterface\MenuItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Airfield">
@@ -183,23 +176,30 @@
   <Class Name="PirateGame.UserInterface.UserInterfaceElement">
     <Position X="4" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAwAAAAAAAAAACAAgAAAASAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAwAAEAAAAAAACAAkgAAAQAIAAAAgAAA=</HashCode>
       <FileName>UserInterface\UserInterfaceElement.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.UserInterface.HealthBar">
-    <Position X="1.5" Y="11.75" Width="1.5" />
+    <Position X="1.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAIAAAAAAgAAAAAAAAAAAAAAAACAAAAAAAAAAAw=</HashCode>
       <FileName>UserInterface\HealthBar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Inventory">
-    <Position X="4" Y="11.75" Width="1.5" />
+    <Position X="4" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAgAAgBCAAAAgAAAAAAEAAAAAAAgAAAAAAQ=</HashCode>
       <FileName>UserInterface\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.UserInterface.SelectableItem&lt;T&gt;">
+    <Position X="6.5" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAQAAAAEAAAAAAAAAABAQAAAAAA=</HashCode>
+      <FileName>UserInterface\SelectableItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="PirateGame.Interfaces.ICollidable">

@@ -6,7 +6,7 @@
     using System;
     using System.Collections.Generic;
 
-    class Menu : UserInterfaceElement
+    public class Menu : UserInterfaceElement
     {
         private const float TitleOffsetX = 50;
         private const float TitleHeight = 25;
@@ -21,33 +21,22 @@
         private string title;
         private int highlightPosition;
 
-        public Menu(Game game, string title, EventHandler closeMenuHandler)
-            : base(game)
+
+        public Menu(Game game, string title, EventHandler showMenuHandler = null, EventHandler hideMenuHandler = null)
+            : base(game, showMenuHandler, hideMenuHandler)
         {
-            this.Enabled = false;                           // Disable Update()
-            this.Visible = false;                           // Disable Draw()
-            this.MenuItems = new List<MenuItem>();          // Create the menu list
+            this.Enabled = false;                               // Disable Update()
+            this.Visible = false;                               // Disable Draw()
+            this.Items = new List<SelectableItem<string>>();    // Create the menu list
             this.Title = title;
             this.highlightPosition = 0;
-
-            if (closeMenuHandler != null)
-            {
-                this.closeMenuHandler = closeMenuHandler;
-            }
-            else
-            {
-                throw new ArgumentNullException("closeMenuHandler", "Close menu handler can't be null.");
-            }
 
             game.Components.Add(this);
         }
 
-        // An event that clients can use to be notified when the menu is closed
-        private event EventHandler closeMenuHandler;
+        public IList<SelectableItem<string>> Items { get; private set; }
 
-        public List<MenuItem> MenuItems { get; private set; }
-
-        private Texture2D MenuBackground
+        private Texture2D Background
         {
             get
             {
@@ -85,34 +74,32 @@
         {
             base.LoadContent();
             this.menuFont = (SpriteFont)Game.Content.Load<SpriteFont>("Arial");
-            this.MenuBackground = Game.Content.Load<Texture2D>("StoneBackground");
-        }
-
-        public override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
-
-            Draw(this.SpriteBatch);
+            this.Background = Game.Content.Load<Texture2D>("StoneBackground");
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
 
+            // If draw rectangle isn't set, set it to the middle of the window
+            if (this.Rectangle.IsEmpty)
+            {
+                int leftEdge = (this.Graphics.PreferredBackBufferWidth - this.Background.Width) / 2;
+                int topEdge = (this.Graphics.PreferredBackBufferHeight - this.Background.Height) / 2;
+                this.Rectangle = new Rectangle(leftEdge, topEdge, this.Background.Width, this.Background.Height);
+            }
+
             // Draw background
-            Vector2 menuPosition = new Vector2();
-            menuPosition.Y = (this.Graphics.PreferredBackBufferHeight - this.MenuBackground.Height) / 2;
-            menuPosition.X = (this.Graphics.PreferredBackBufferWidth - this.MenuBackground.Width) / 2;
-            spriteBatch.Draw(this.MenuBackground, menuPosition, Color.White);
+            spriteBatch.Draw(this.Background, this.Rectangle, Color.White);
 
             // Draw title
-            Vector2 itemPosition = new Vector2(menuPosition.X + Menu.TitleOffsetX, menuPosition.Y + Menu.TitleHeight);
+            Vector2 itemPosition = new Vector2(this.Rectangle.X + Menu.TitleOffsetX, this.Rectangle.Y + Menu.TitleHeight);
             spriteBatch.DrawString(this.menuFont, this.Title, itemPosition, Menu.ItemColor);
             itemPosition.Y += Menu.TitleHeight;
 
             // Draw items
-            itemPosition.X = menuPosition.X + Menu.ItemsOffsetX;
-            for (int index = 0; index < MenuItems.Count; index++)
+            itemPosition.X = this.Rectangle.X + Menu.ItemsOffsetX;
+            for (int index = 0; index < this.Items.Count; index++)
             {
                 Color color = Menu.ItemColor;
                 if (highlightPosition == index)
@@ -120,7 +107,7 @@
                     color = Menu.ItemHighlightColor;
                 }
                 itemPosition.Y += Menu.ItemsHeight;
-                spriteBatch.DrawString(this.menuFont, this.MenuItems[index].Title, itemPosition, color);
+                spriteBatch.DrawString(this.menuFont, this.Items[index].Item, itemPosition, color);
             }
 
             spriteBatch.End();
@@ -134,10 +121,10 @@
 
             if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Check for close menu
             {
-                closeMenuHandler(this, null);
+                this.Hide();
             }
 
-            if (this.MenuItems.Count > 0)                   // Check if menu contains items
+            if (this.Items.Count > 0)                   // Check if menu contains items
             {
                 if (newKBState.IsKeyDown(Keys.Up) && this.oldKBState.IsKeyUp(Keys.Up))
                 {
@@ -148,25 +135,25 @@
                 }
                 else if (newKBState.IsKeyDown(Keys.Down) && this.oldKBState.IsKeyUp(Keys.Down))
                 {
-                    if (highlightPosition < MenuItems.Count - 1)
+                    if (highlightPosition < Items.Count - 1)
                     {
                         highlightPosition++;
                     }
                 }
                 else if (newKBState.IsKeyDown(Keys.Enter) && this.oldKBState.IsKeyUp(Keys.Enter))
                 {
-                    MenuItems[highlightPosition].Select();
+                    Items[highlightPosition].Select();
                 }
             }
 
             this.oldKBState = newKBState;
         }
 
-        public override void ToggleActive()
+        public override void Show()
         {
-            base.ToggleActive();
+            base.Show();
 
-            this.oldKBState = Keyboard.GetState();          // Store old KB state on enable and disable
+            this.oldKBState = Keyboard.GetState();          // Store old KB state on open
         }
     }
 }

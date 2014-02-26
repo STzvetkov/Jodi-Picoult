@@ -1,34 +1,34 @@
-﻿namespace PirateGame.UserInterface
-{
-    using System;
+﻿using System;
 
-    public class MenuItem
+namespace PirateGame.UserInterface
+{
+    public class SelectableItem<T>
     {
-        private string title;
+        private T item;
 
         // An event that clients can use to be notified when the menu item is selected
         private event EventHandler itemSelectedHandler;
 
-        public MenuItem(string title, EventHandler itemSelected)
+        public SelectableItem(T item, EventHandler itemSelected)
         {
-            this.Title = title;
+            this.Item = item;
             this.AddHandler(itemSelected);
         }
 
-        // Item title property
-        public string Title
+        // Item property
+        public T Item
         {
             get
             {
-                return this.title;
+                return this.item;
             }
             private set
             {
-                if (string.IsNullOrEmpty(value))
+                if (value == null)
                 {
-                    throw new ArgumentException("Title can't be null or empty string.");
+                    throw new ArgumentException("Item can't be null.");
                 }
-                this.title = value;
+                this.item = value;
             }
         }
 

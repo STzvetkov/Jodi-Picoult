@@ -33,12 +33,10 @@ namespace PirateGame
         List<string> messages;
         private Popup p;
 
-        //temporary
+        //Menu system
         private Menu mainMenu;
-        private bool MainMenuIsOn;
-        
-        //temporary
-        
+        private int openMenusCount;
+
         public GameClass() : base()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -48,11 +46,29 @@ namespace PirateGame
             
             this.IsMouseVisible = true;
             
-            this.mainMenu = new Menu(this, "Pirate Menu", this.OnToggleMainMenu);
-            
-            this.MainMenuIsOn = false;
+            this.mainMenu = new Menu(this, "Pirate Menu", this.OnOpenMenu, this.OnCloseMenu);
+
+            this.openMenusCount = 0;
         }
-        
+
+        /// <summary>
+        /// Calculates if the game engine is allowed to run
+        /// </summary>
+        private bool EnableGameProcessing
+        {
+            get
+            {
+                if (this.openMenusCount == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -69,8 +85,9 @@ namespace PirateGame
             
             this.oldKBState = Keyboard.GetState();
 
-            this.mainMenu.MenuItems.Add(new MenuItem("Play", this.OnPlay));
-            this.mainMenu.MenuItems.Add(new MenuItem("Quit", this.OnExit));
+            this.mainMenu.Items.Add(new SelectableItem<string>("Play", this.OnPlay));
+            this.mainMenu.Items.Add(new SelectableItem<string>("Test Inventory", this.OnInventoryTest));
+            this.mainMenu.Items.Add(new SelectableItem<string>("Quit", this.OnExit));
             base.Initialize();
         }
         
@@ -98,6 +115,8 @@ namespace PirateGame
                     "Weapons:"+playerShip.Weapons
                 };
             p = new Popup(this.Content, "ship_popup", "Arial", messages, playerShip);
+
+
         }
         
         /// <summary>
@@ -117,23 +136,12 @@ namespace PirateGame
         {
             KeyboardState newKBState = Keyboard.GetState();
 
-            bool mouseOverShip = playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
-
-            if (mouseOverShip || newKBState.IsKeyDown(Keys.LeftControl))
+            if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
             {
-                p.IsVisible = true;
-            }
-            else
-            {
-                p.IsVisible = false;
+                this.mainMenu.Show();
             }
 
-            if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))   // Toggle main menu
-            {
-                this.OnToggleMainMenu(this.mainMenu, null);
-            }
-
-            if (this.MainMenuIsOn == false)                 // Process the input if the menu is off
+            if (this.EnableGameProcessing)                  // Process the game logic if all menus are off
             {
                 if (newKBState.IsKeyDown(Keys.Up))
                 {
@@ -150,6 +158,17 @@ namespace PirateGame
                 else if (newKBState.IsKeyDown(Keys.Right))
                 {
                     this.playerShip.Move(Keys.Right, this.continents);
+                }
+
+                bool mouseOverShip = playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+
+                if (mouseOverShip || newKBState.IsKeyDown(Keys.LeftControl))
+                {
+                    p.IsVisible = true;
+                }
+                else
+                {
+                    p.IsVisible = false;
                 }
             }
 
@@ -179,27 +198,59 @@ namespace PirateGame
         }
 
         /// <summary>
-        /// Toggles the main menu on and off
+        /// Open menu post processing
         /// </summary>
-        /// <param name="menu">Menu object</param>
+        /// <param name="menu">Menu</param>
         /// <param name="e">Not used</param>
-        public void OnToggleMainMenu(object menu, EventArgs e = null)
+        public void OnOpenMenu(object menu, EventArgs e = null)
         {
-            ((Menu)menu).ToggleActive();
-
-            // All other DrawableGameComponent.Enabled properties should be disabled here
-            // when the main menu is on
-            this.MainMenuIsOn = !this.MainMenuIsOn;
+            this.openMenusCount += 1;
         }
 
+        /// <summary>
+        /// Close menu post processing
+        /// </summary>
+        /// <param name="menu">Menu</param>
+        /// <param name="e">Not used</param>
+        public void OnCloseMenu(object menu, EventArgs e = null)
+        {
+            this.openMenusCount -= 1;
+        }
+
+        /// <summary>
+        /// Exit the game command
+        /// </summary>
+        /// <param name="menuItem">Menu item</param>
+        /// <param name="e">Not used</param>
         public void OnExit(object menuItem, EventArgs e = null)
         {
             this.Exit();
         }
 
+        /// <summary>
+        /// Continue the game
+        /// </summary>
+        /// <param name="menuItem">Menu item</param>
+        /// <param name="e">Not used</param>
         public void OnPlay(object menuItem, EventArgs e = null)
         {
-            this.OnToggleMainMenu(this.mainMenu);
+            this.mainMenu.Hide();
+        }
+
+        private void OnInventoryTest(object menuItem, EventArgs e = null)
+        {
+            this.mainMenu.Hide();
+
+            Inventory test = new Inventory(this);
+
+            // TODO: remove the test
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, OnExit));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent2, null));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, OnExit));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
+
+            test.Show();
         }
 
     }
