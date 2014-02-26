@@ -15,7 +15,7 @@ namespace PirateGame.Ship
         private double time;
         private MoveAction handler;
         private Vector2 destination;
-        private float speed = 3f;
+        private float speed = 2.2f;
         private bool reached;
 
         public NpcShip(ContentManager content, string texture, int x, int y, Vector2 destination) : base(content, texture, x, y)
