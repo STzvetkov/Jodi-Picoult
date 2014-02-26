@@ -165,6 +165,10 @@ namespace PirateGame
                 case GameState.FreeRoam:
                     this.newKBState = Keyboard.GetState();
 
+                    // add production of goods
+                    this.tradeCenter1.ProduceGoods(gameTime);
+                    this.fishingVillage1.ProduceGoods(gameTime);
+
                     this.playerShip.ResetHitpoints();
 
                     bool mouseOverShip = this.playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);

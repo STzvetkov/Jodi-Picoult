@@ -21,10 +21,14 @@ namespace PirateGame.MapObjects
         }
 
         // methods:
-        public override void PoduceGoods()
+        public override void ProduceGoods(GameTime gameTime)
         {
-            int accumulatedAmount = this.GoodsAmount + this.ProductionRate * this.Population / PopulationImpact;
-            this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+            if (CheckTime(gameTime, 8))
+            {
+                int accumulatedAmount = this.GoodsAmount + this.ProductionRate * this.Population / PopulationImpact;
+                this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+                this.produceTime = gameTime.TotalGameTime.TotalSeconds;
+            }
         }
     }
 }
