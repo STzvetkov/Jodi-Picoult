@@ -3,7 +3,7 @@
   <Class Name="PirateGame.GameClass">
     <Position X="9" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEEAQAAAAAwBAAAAACIABIAAQEAgvBEIAAAAAAAY=</HashCode>
+      <HashCode>AAQAEEIQAAAAEwBAAoAACIABIAAQEAgvBUIgAAAAAAY=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -15,14 +15,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Continent">
-    <Position X="30" Y="12.75" Width="1.5" />
+    <Position X="30.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Continent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.LandObject">
-    <Position X="30" Y="11.25" Width="1.5" />
+    <Position X="30.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>MapObjects\LandObject.cs</FileName>
@@ -30,7 +30,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.MapObject">
-    <Position X="29" Y="8" Width="1.5" />
+    <Position X="29.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAIAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MapObjects\MapObject.cs</FileName>
@@ -38,14 +38,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.SeaObject">
-    <Position X="27.75" Y="11.25" Width="1.5" />
+    <Position X="28" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\SeaObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Wreckage">
-    <Position X="27.75" Y="12.75" Width="1.5" />
+    <Position X="28" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Wreckage.cs</FileName>
@@ -54,7 +54,7 @@
   <Class Name="PirateGame.Ship.PlayerShip">
     <Position X="16" Y="13.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Ship\PlayerShip.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -103,65 +103,65 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Airfield">
-    <Position X="37.5" Y="20.25" Width="1.5" />
+    <Position X="37.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Airfield.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.CivilianSettlement">
-    <Position X="29" Y="16.75" Width="1.5" />
+    <Position X="29.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAIAAAACIAAQAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAgAAAAAAAAAAIAAAACAAAQACA=</HashCode>
       <FileName>MapObjects\CivilianSettlement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.FishingVillage">
-    <Position X="27" Y="20.25" Width="1.5" />
+    <Position X="27" Y="12.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>MapObjects\FishingVillage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.MilitaryPort">
-    <Position X="35.5" Y="20.25" Width="1.5" />
+    <Position X="35.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\MilitaryPort.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.MilitarySettlement">
-    <Position X="35.5" Y="16.75" Width="1.5" />
+    <Position X="35.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\MilitarySettlement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Settlement">
-    <Position X="32.25" Y="12.75" Width="1.5" />
+    <Position X="32.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAQAAAEAAAAAAAIAAAAAAEAAEIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Settlement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.OilPlatform">
-    <Position X="29" Y="20.25" Width="1.5" />
+    <Position X="29.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>MapObjects\OilPlatform.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.PiratesHideout">
-    <Position X="33.5" Y="20.25" Width="1.5" />
+    <Position X="33.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\PiratesHideout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.TradeCenter">
-    <Position X="31" Y="20.25" Width="1.5" />
+    <Position X="31.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>MapObjects\TradeCenter.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -184,14 +184,14 @@
   <Class Name="PirateGame.UserInterface.HealthBar">
     <Position X="1.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAIAAAAAAgAAAAAAAAAAAAAAAACAAAAAAAAAAAw=</HashCode>
+      <HashCode>BAQAAAIAAAAAAgAQAAAAAAAAAAAAAACAAAAAAAAAAAw=</HashCode>
       <FileName>UserInterface\HealthBar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Inventory">
     <Position X="4" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAgAAgBCAAAAgAAAAAAEAAAAAAAgAAAAAAQ=</HashCode>
+      <HashCode>AAQAAAAAAgAAGgBCAAAAgAAAAAAEAAAAAAAgEQAAAAQ=</HashCode>
       <FileName>UserInterface\Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -201,6 +201,29 @@
       <HashCode>AAAAAAAAAAAAAAQAAAQAAAAEAAAAAAAAAABAQAAAAAA=</HashCode>
       <FileName>UserInterface\SelectableItem.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.GlobalConstants" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.Ship.NpcShip" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUFAAgAAAAAAAAAQAAEAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Ship\NpcShip.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PirateGame.Ship.Projectile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAIAACAAAAAgAgAAgAIAAAAAAAA=</HashCode>
+      <FileName>Ship\Projectile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Interface Name="PirateGame.Interfaces.ICollidable">
     <Position X="14.75" Y="4.5" Width="1.5" />
@@ -255,6 +278,27 @@
     <Position X="13.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>Enums\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PirateGame.Enums.Coutries" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAACAAAAAAAAAAAAAAAQBAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Enums\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PirateGame.Enums.ProductionGoods" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAIAAAAAAAAQAAAAAAAAACAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Enums\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PirateGame.Enums.GameState" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>

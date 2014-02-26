@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PirateGame.Enums;
+using PirateGame.Interfaces;
 using PirateGame.MapObjects;
 using PirateGame.Popups;
 using PirateGame.Ship;
@@ -20,6 +22,7 @@ namespace PirateGame
     /// </summary>
     public class GameClass : Game
     {
+        private GameState gameState;
         private Texture2D waterMapTexture;
         private Rectangle watermapRect;
         private GraphicsDeviceManager graphics;
@@ -30,13 +33,16 @@ namespace PirateGame
         private Continent continent2;
         private Continent continent3;
         private List<PirateGame.Interfaces.IDrawableCustom> continents;
-        List<string> messages;
+        private List<string> messages;
         private Popup p;
-
+        private KeyboardState newKBState;
+        private bool flag = false;
+        private List<NpcShip> npcs;
+        
         //Menu system
         private Menu mainMenu;
         private int openMenusCount;
-
+        
         public GameClass() : base()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -47,10 +53,10 @@ namespace PirateGame
             this.IsMouseVisible = true;
             
             this.mainMenu = new Menu(this, "Pirate Menu", this.OnOpenMenu, this.OnCloseMenu);
-
+            
             this.openMenusCount = 0;
         }
-
+        
         /// <summary>
         /// Calculates if the game engine is allowed to run
         /// </summary>
@@ -68,7 +74,7 @@ namespace PirateGame
                 }
             }
         }
-
+        
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -84,7 +90,7 @@ namespace PirateGame
             this.Services.AddService(typeof(SpriteBatch), this.spriteBatch);
             
             this.oldKBState = Keyboard.GetState();
-
+            
             this.mainMenu.Items.Add(new SelectableItem<string>("Play", this.OnPlay));
             this.mainMenu.Items.Add(new SelectableItem<string>("Test Inventory", this.OnInventoryTest));
             this.mainMenu.Items.Add(new SelectableItem<string>("Quit", this.OnExit));
@@ -103,20 +109,26 @@ namespace PirateGame
             this.continent2 = new Continent(this.Content, "con2", 40, 40, 300, 300);
             this.continent3 = new Continent(this.Content, "con3", 40, 300, 300, 300);
             this.playerShip = new PlayerShip(this.Content, "pirate_ship", GlobalConstants.WINDOW_WIDTH / 2, GlobalConstants.WINDOW_HEIGHT / 2);
+            this.npcs = new List<NpcShip>
+            {
+                new NpcShip(this.Content,"pirate_ship_npc1",300,200),
+                new NpcShip(this.Content,"pirate_ship_npc1",500,300),
+                new NpcShip(this.Content,"pirate_ship_npc1",400,400)
+            };
             this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
                 this.continent1,
                 this.continent2,
                 this.continent3,
             };
-            messages = new List<string>
-                {
-                    "Hull:" + playerShip.Hull,
-                    "Weapons:"+playerShip.Weapons
-                };
-            p = new Popup(this.Content, "ship_popup", "Arial", messages, playerShip);
-
-
+            this.messages = new List<string>
+            {
+                string.Format("Hull:{0}", this.playerShip.Hull),
+                string.Format("Weapons:{0}", this.playerShip.Weapons),
+                string.Format("Hit Points:{0}", this.playerShip.Hitpoints),
+                string.Format("Damage:{0}",this.playerShip.Damage)
+            };
+            this.p = new Popup(this.Content, "ship_popup", "Arial", this.messages, this.playerShip);
         }
         
         /// <summary>
@@ -134,69 +146,117 @@ namespace PirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            KeyboardState newKBState = Keyboard.GetState();
-
-            if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
+            switch (this.gameState)
             {
-                this.mainMenu.Show();
+                case GameState.FreeRoam:
+                    this.newKBState = Keyboard.GetState();
+                    
+                    bool mouseOverShip = this.playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+                    
+                    if (mouseOverShip || this.newKBState.IsKeyDown(Keys.LeftControl))
+                    {
+                        this.p.IsVisible = true;
+                    }
+                    else
+                    {
+                        this.p.IsVisible = false;
+                    }
+                    
+                    if (this.newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
+                    {
+                        this.mainMenu.Show();
+                    }
+                    
+                    this.UpdateMove(this.continents);
+                    
+                    this.npcs.RemoveAll(x => x.IsDestroyed);
+                    for (int i = this.npcs.Count - 1; i >= 0; i--)
+                    {
+                        this.npcs[i].Update(this.playerShip, ref this.gameState, gameTime);
+                    }
+                    
+                    this.oldKBState = this.newKBState;
+                    break;
+                case GameState.Combat:
+                    if (!this.flag)
+                    {
+                        this.npcs.Find(x => x.IsInCombat).AdjustPos(300, 200);
+                        this.playerShip.AdjustPos(300, 500);
+                        this.flag = true;
+                    }
+                    var ships = this.npcs.FindAll(x => x.IsInCombat = true);
+                    this.UpdateMove(ships.ConvertAll<IDrawableCustom>(x => x as IDrawableCustom));
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    {
+                        this.playerShip.Fire(gameTime);
+                    }
+                    this.playerShip.Update(this.npcs.Find(x => x.IsInCombat), ref this.gameState, gameTime);
+                    this.npcs.Find(x => x.IsInCombat).Update(this.playerShip, ref this.gameState, gameTime);
+                    break;
+                case GameState.GameOver:
+                    break;
+                case GameState.YouWin:
+                    break;
+                default:
+                    break;
             }
-
-            if (this.EnableGameProcessing)                  // Process the game logic if all menus are off
-            {
-                if (newKBState.IsKeyDown(Keys.Up))
-                {
-                    this.playerShip.Move(Keys.Up, this.continents);
-                }
-                else if (newKBState.IsKeyDown(Keys.Down))
-                {
-                    this.playerShip.Move(Keys.Down, this.continents);
-                }
-                else if (newKBState.IsKeyDown(Keys.Left))
-                {
-                    this.playerShip.Move(Keys.Left, this.continents);
-                }
-                else if (newKBState.IsKeyDown(Keys.Right))
-                {
-                    this.playerShip.Move(Keys.Right, this.continents);
-                }
-
-                bool mouseOverShip = playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
-
-                if (mouseOverShip || newKBState.IsKeyDown(Keys.LeftControl))
-                {
-                    p.IsVisible = true;
-                }
-                else
-                {
-                    p.IsVisible = false;
-                }
-            }
-
-            this.oldKBState = newKBState;
-
+            
             base.Update(gameTime);
         }
-
+        
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            this.GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            this.GraphicsDevice.Clear(Color.CornflowerBlue); 
             this.spriteBatch.Begin();
-            this.spriteBatch.Draw(this.waterMapTexture, this.watermapRect, Color.White);
-            this.continent1.Draw(this.spriteBatch);
-            this.continent2.Draw(this.spriteBatch);
-            this.continent3.Draw(this.spriteBatch);
-            this.playerShip.Draw(this.spriteBatch);
-            this.p.Draw(this.spriteBatch);
+            switch (this.gameState)
+            {
+                case GameState.FreeRoam:
+                    this.spriteBatch.Draw(this.waterMapTexture, this.watermapRect, Color.White);
+                    this.continent1.Draw(this.spriteBatch);
+                    this.continent2.Draw(this.spriteBatch);
+                    this.continent3.Draw(this.spriteBatch);
+                    this.playerShip.Draw(this.spriteBatch);
+                    this.p.Draw(this.spriteBatch);
+                    foreach (var item in this.npcs)
+                    {
+                        item.Draw(this.spriteBatch);
+                    }
+                    break;
+                case GameState.Combat:
+                    if (this.npcs.Find(x => x.IsInCombat).IsDestroyed)
+                    {
+                        this.gameState = GameState.FreeRoam;
+                        break;
+                    }
+                    this.spriteBatch.Draw(this.waterMapTexture, this.watermapRect, Color.White);
+                    this.playerShip.Draw(this.spriteBatch);
+                    foreach (var item in this.playerShip.Bullets)
+                    {
+                        item.Draw(this.spriteBatch);
+                    }
+                    foreach (var item in this.npcs.Find(x => x.IsInCombat).Bullets)
+                    {
+                        item.Draw(this.spriteBatch);
+                    }
+                    this.npcs.Find(x => x.IsInCombat).Draw(this.spriteBatch);
+                    break;
+                case GameState.GameOver:
+                    break;
+                case GameState.YouWin:
+                    break;
+                default:
+                    break;
+            }
+            
             this.spriteBatch.End();
-
+            
             base.Draw(gameTime);
         }
-
+        
         /// <summary>
         /// Open menu post processing
         /// </summary>
@@ -206,7 +266,7 @@ namespace PirateGame
         {
             this.openMenusCount += 1;
         }
-
+        
         /// <summary>
         /// Close menu post processing
         /// </summary>
@@ -216,7 +276,7 @@ namespace PirateGame
         {
             this.openMenusCount -= 1;
         }
-
+        
         /// <summary>
         /// Exit the game command
         /// </summary>
@@ -226,7 +286,7 @@ namespace PirateGame
         {
             this.Exit();
         }
-
+        
         /// <summary>
         /// Continue the game
         /// </summary>
@@ -236,22 +296,44 @@ namespace PirateGame
         {
             this.mainMenu.Hide();
         }
-
+        
         private void OnInventoryTest(object menuItem, EventArgs e = null)
         {
             this.mainMenu.Hide();
-
+            
             Inventory test = new Inventory(this);
-
+            
             // TODO: remove the test
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, OnExit));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnExit));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent2, null));
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, OnExit));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, this.OnExit));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
-
+            
             test.Show();
         }
-
+        
+        private void UpdateMove(List<IDrawableCustom> drawables)
+        {
+            if (this.EnableGameProcessing)                 // Process the input if the menu is off
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    this.playerShip.Move(Keys.Up, drawables);
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    this.playerShip.Move(Keys.Down, drawables);
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
+                    this.playerShip.Move(Keys.Left, drawables);
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
+                    this.playerShip.Move(Keys.Right, drawables);
+                }
+            }
+        }
     }
 }
