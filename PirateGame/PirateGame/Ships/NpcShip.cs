@@ -4,10 +4,12 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using PirateGame;
 using PirateGame.Enums;
 using PirateGame.Interfaces;
+using PirateGame.Ships;
 
-namespace PirateGame.Ship
+namespace PirateGame.Ships
 {
     public class NpcShip : Ship, IDrawableCustom, IDestroyable
     {

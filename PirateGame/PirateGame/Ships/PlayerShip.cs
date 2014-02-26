@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Content;
 using PirateGame.Interfaces;
-using PirateGame.Stuff;
+using PirateGame.Ships;
+using PirateGame.Upgrades;
 
-namespace PirateGame.Ship
+namespace PirateGame.Ships
 {
     public class PlayerShip : Ship
     {

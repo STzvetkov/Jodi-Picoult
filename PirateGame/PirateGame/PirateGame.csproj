@@ -39,8 +39,8 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="GameClass.cs" />
     <Compile Include="GlobalConstants.cs" />
-    <Compile Include="Ship\NpcShip.cs" />
-    <Compile Include="Ship\Projectile.cs" />
+    <Compile Include="Ships\NpcShip.cs" />
+    <Compile Include="Ships\Projectile.cs" />
     <Compile Include="UserInterface\HealthBarr.cs" />
     <Compile Include="UserInterface\Inventory.cs" />
     <Compile Include="UserInterface\HealthBar.cs" />
@@ -65,10 +65,10 @@
     <Compile Include="MapObjects\Wreckage.cs" />
     <Compile Include="UserInterface\Menu.cs" />
     <Compile Include="Popups\Popup.cs" />
-    <Compile Include="Ship\PlayerShip.cs" />
+    <Compile Include="Ships\PlayerShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship\Ship.cs" />
+    <Compile Include="Ships\Ship.cs" />
     <Compile Include="Upgrades\CrewUpgrade.cs" />
     <Compile Include="Upgrades\HullUpgrade.cs" />
     <Compile Include="Upgrades\Upgrade.cs" />

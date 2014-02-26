@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PirateGame.Stuff;
-using PirateGame.Ship;
+using PirateGame.Ships;
 
 namespace PirateGame.Interfaces
 {
     interface IUpgrade
     {
-        void Upgrade(Ship.Ship ship);
+        void UpgradeShip();
 
     }
 }
