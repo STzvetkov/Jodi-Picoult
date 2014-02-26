@@ -8,22 +8,25 @@
     {
         private int health;
         private Func<int> getHealthDelegate;
+        private Texture2D container, lifebar;
 
         public HealthBar(Game game, Func<int> getHealthDelegate)
             : base(game)
         {
             this.Enabled = false;                           // Disable Update()
-            this.Visible = false;                           // Disable Draw()
+            this.Visible = false;                        // Disable Draw()
 
             this.GetHealthDelegate = getHealthDelegate;     // Assign getHealth delegate
             this.health = GetHealthDelegate();              // Get target health
 
             game.Components.Add(this);                      // Add health bar to the game components collection
-                                                            // LoadContent(), Draw(GameTime gameTime) & Update(GameTime gameTime)
-                                                            // are called automatically by the game
+            // LoadContent(), Draw(GameTime gameTime) & Update(GameTime gameTime)
+            // are called automatically by the game
 
             throw new System.NotImplementedException();
         }
+
+
 
         public Func<int> GetHealthDelegate
         {
@@ -45,10 +48,8 @@
         {
             base.LoadContent();
 
-                                                            // load health bar texture
-            this.Texture = Game.Content.Load<Texture2D>("HealthBarImageFileName");
-
-            throw new System.NotImplementedException();
+            container = Game.Content.Load<Texture2D>("lifeBar");  // load health bar texture
+            lifebar = Game.Content.Load<Texture2D>("healthGauge");
         }
 
         public override void Draw(GameTime gameTime)
@@ -61,7 +62,8 @@
         public override void Draw(SpriteBatch spriteBatch)
         {
             // draw health bar on this.Rectangle coordinates
-            throw new System.NotImplementedException();
+            spriteBatch.Draw(lifebar, new Rectangle(100, 100, 40, 40), Color.White);
+            spriteBatch.Draw(container, Rectangle, Color.White);
         }
 
         public override void Update(GameTime gameTime)

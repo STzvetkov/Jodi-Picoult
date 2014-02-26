@@ -96,9 +96,11 @@
     <Content Include="Content\con4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\healthGauge.png" />
     <Content Include="Content\InventoryHighlight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\lifeBar.png" />
     <Content Include="Content\pirate_ship.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
