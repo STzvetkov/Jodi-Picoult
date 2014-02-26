@@ -127,7 +127,7 @@ namespace PirateGame
                 new NpcShip(this.Content,"pirate_ship_npc1",300,200,new Vector2(500,100)),
                 new NpcShip(this.Content,"pirate_ship_npc1",500,300),
                 new NpcShip(this.Content,"pirate_ship_npc1",400,400,new Vector2(210,520)),
-                new NpcShip(this.Content,"big_ship",570,490,100,100,400)
+                new NpcShip(this.Content,"big_ship",570,490,100,100)
             };
             // add fishing village
             this.fishingVillage1 = new FishingVillage(2, 200, 10, 10000, 150, 1000, 30, Coutries.Tanzania,

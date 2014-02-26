@@ -74,7 +74,7 @@ namespace PirateGame.Ship
             }
         }
 
-        public int Hitpoints { get; protected set; }
+        public int Hitpoints { get; private set; }
 
         public bool IsDestroyed { get; private set; }
 

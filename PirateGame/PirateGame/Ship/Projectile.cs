@@ -47,11 +47,11 @@ namespace PirateGame.Ship
             }
             if (attacker.Rectangle.Y > target.Rectangle.Y)
             {
-                this.rectangle.Y -= 1;
+                this.rectangle.Y -= 2;
             }
             else
             {
-                this.rectangle.Y += 1;
+                this.rectangle.Y += 2;
             }
         }
 

@@ -34,14 +34,15 @@ namespace PirateGame.Ship
             this.IsInCombat = false;
         }
 
-        public NpcShip(ContentManager content, string texture, int x, int y, int width, int height,int hitPoints)
+        public NpcShip(ContentManager content, string texture, int x, int y, int width, int height)
             : base(content, texture, x, y)
         {
             this.time = 0;
             this.handler = new MoveAction(this.MoveRight);
             this.IsInCombat = false;
             this.rectangle = new Rectangle(x,y,width,height);
-            this.Hitpoints = hitPoints;
+            this.Hull = Hull.Steel;
+            this.Weapons = Weapons.Shredder;
         }
 
         private delegate void MoveAction(List<IDrawableCustom> d);
