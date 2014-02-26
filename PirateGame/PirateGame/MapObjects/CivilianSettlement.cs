@@ -31,9 +31,9 @@ namespace PirateGame.MapObjects
             ContentManager content, string texture, int x, int y, int width, int height)
             : this(startPopulation, initialWealth, defence, stCountry, content, texture, x, y, width, height)
         {
-            this.GoodsAmount = initialGoodsAmount;
-            this.ProductionRate = initialProductionRate;
             this.StorageCapacity = initialStorageCapacity;
+            this.GoodsAmount = initialGoodsAmount;
+            this.ProductionRate = initialProductionRate;            
             this.ProductionType = ProductionGoods.TradingGoods;
         }
        
