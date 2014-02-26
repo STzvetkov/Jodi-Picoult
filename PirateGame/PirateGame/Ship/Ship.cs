@@ -14,6 +14,8 @@ namespace PirateGame.Ship
     {
         private const int MaxHitpoints = 200;
 
+        private const int InitialDamage = 40;
+
         private Vector2 speed;
 
         private Rectangle rectangle;
@@ -34,6 +36,7 @@ namespace PirateGame.Ship
             this.Hull = Hull.Basic;
             this.IsDestroyed = false;
             this.Hitpoints = MaxHitpoints;
+            this.Damage = InitialDamage;
             this.Bullets = new List<Projectile>();
             this.fireTime = 0;
             this.initialCoordinates.X = x;
@@ -50,6 +53,8 @@ namespace PirateGame.Ship
             }
         }
 
+        public int Damage { get; private set; }
+        
         public Texture2D Texture { get; private set; }
 
         public Weapons Weapons { get; set; }
@@ -222,9 +227,12 @@ namespace PirateGame.Ship
             {
                 if (this.Bullets[i].Hit)
                 {
-                    target.IsDestroyed = true;
-                    this.rectangle.X = (int)target.initialCoordinates.X;
-                    this.rectangle.Y = (int)target.initialCoordinates.Y;
+                    target.TakeDamage(this.Damage);
+                    if(target.IsDestroyed)
+                    {
+                        this.rectangle.X = (int)target.initialCoordinates.X;
+                        this.rectangle.Y = (int)target.initialCoordinates.Y;
+                    }                  
                     this.Bullets.RemoveAt(i);
                 }
             }

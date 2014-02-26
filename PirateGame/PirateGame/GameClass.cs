@@ -124,7 +124,9 @@ namespace PirateGame
             this.messages = new List<string>
             {
                 string.Format("Hull:{0}", this.playerShip.Hull),
-                string.Format("Weapons:{0}", this.playerShip.Weapons)
+                string.Format("Weapons:{0}", this.playerShip.Weapons),
+                string.Format("Hit Points:{0}", this.playerShip.Hitpoints),
+                string.Format("Damage:{0}",this.playerShip.Damage)
             };
             this.p = new Popup(this.Content, "ship_popup", "Arial", this.messages, this.playerShip);
         }
