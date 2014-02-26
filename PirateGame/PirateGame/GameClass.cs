@@ -39,6 +39,7 @@ namespace PirateGame
         private bool flag = false;
         private List<NpcShip> npcs;
         private SpriteFont gameFont;
+        private HealthBarr healthBar;
         
         //Menu system
         private Menu mainMenu;
@@ -111,6 +112,7 @@ namespace PirateGame
             this.continent2 = new Continent(this.Content, "con2", 40, 40, 300, 300);
             this.continent3 = new Continent(this.Content, "con3", 40, 300, 300, 300);
             this.playerShip = new PlayerShip(this.Content, "pirate_ship", GlobalConstants.WINDOW_WIDTH / 2, GlobalConstants.WINDOW_HEIGHT / 2);
+            healthBar = new HealthBarr(Content);
             this.npcs = new List<NpcShip>
             {
                 new NpcShip(this.Content,"pirate_ship_npc1",300,200),
@@ -214,7 +216,7 @@ namespace PirateGame
                 default:
                     break;
             }
-            
+            healthBar.Update();
             base.Update(gameTime);
         }
         
@@ -266,7 +268,7 @@ namespace PirateGame
                 default:
                     break;
             }
-            
+            healthBar.Draw(spriteBatch);
             this.spriteBatch.End();
             
             base.Draw(gameTime);
