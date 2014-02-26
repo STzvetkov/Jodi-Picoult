@@ -34,9 +34,9 @@ namespace PirateGame.MapObjects
         
 
         // virtual methods
-        public virtual  PlayerShip BuildShip(ContentManager content, string texture) // ship details to be added here
+        public virtual NpcShip BuildShip(ContentManager content, string texture) // ship details to be added here
         {
-            return new PlayerShip(content, texture, this.LocationX, this.LocationY);
+            return new NpcShip(content, texture, this.LocationX, this.LocationY);
         }
         public virtual PlayerShip SendShip(ContentManager content, string texture)
         {
