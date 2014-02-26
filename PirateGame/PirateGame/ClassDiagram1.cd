@@ -76,72 +76,6 @@
       <FileName>MapObjects\Wreckage.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PirateGame.Ship.PlayerShip">
-    <Position X="13.25" Y="9.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Ship\PlayerShip.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="PirateGame.Ship.Ship">
-    <Position X="15.25" Y="6.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Properties" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AsQCgACAAIAUAgAQAAAAACQAAAQkAwAAAAIAgAAQABA=</HashCode>
-      <FileName>Ship\Ship.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="PirateGame.Stuff.CrewUpgrade">
-    <Position X="25.25" Y="6.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Upgrades\CrewUpgrade.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PirateGame.Stuff.HullUpgrade">
-    <Position X="21.25" Y="6.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Upgrades\HullUpgrade.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PirateGame.Stuff.Upgrade">
-    <Position X="23.25" Y="4.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAgAAAAAAIAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>Upgrades\Upgrade.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PirateGame.Stuff.WeaponUpgrade">
-    <Position X="23.25" Y="6.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Upgrades\WeaponUpgrade.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PirateGame.UserInterface.Menu">
     <Position X="8.25" Y="8.75" Width="1.5" />
     <Compartments>
@@ -317,21 +251,91 @@
       <FileName>GlobalConstants.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PirateGame.Ship.NpcShip" Collapsed="true">
-    <Position X="17.25" Y="10" Width="1.5" />
+  <Class Name="PirateGame.Ships.PlayerShip">
+    <Position X="13.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Ships\PlayerShip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.Ships.NpcShip">
+    <Position X="17.25" Y="9.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="PirateGame.Ships.NpcShip.MoveAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Ships\NpcShip.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAUFAAgAAAAAAAAAQAAEAQAAAAAAAQAIQAAABAAAAAA=</HashCode>
-      <FileName>Ship\NpcShip.cs</FileName>
+      <FileName>Ships\NpcShip.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="PirateGame.Ship.Projectile" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.75" Y="3.5" Width="1.5" />
+  <Class Name="PirateGame.Ships.Ship">
+    <Position X="15.25" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AsQCgACAAIAUAgAQAAAAACQAAAQkAwAAAAIAgAAQABA=</HashCode>
+      <FileName>Ships\Ship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PirateGame.Ships.Projectile" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAIAACAAAAAgAgAAgAIAAAAAAAA=</HashCode>
-      <FileName>Ship\Projectile.cs</FileName>
+      <FileName>Ships\Projectile.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PirateGame.Upgrades.Upgrade">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAIAAAgAAAAAAIAAAAAAAAAAIgAAAAAAAAAA=</HashCode>
+      <FileName>Upgrades\Upgrade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PirateGame.Upgrades.HullUpgrade">
+    <Position X="21.25" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Upgrades\HullUpgrade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PirateGame.Upgrades.WeaponUpgrade">
+    <Position X="23.25" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Upgrades\WeaponUpgrade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.Upgrades.CrewUpgrade">
+    <Position X="25.25" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Upgrades\CrewUpgrade.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="PirateGame.Interfaces.ICollidable">
     <Position X="14.75" Y="4.5" Width="1.5" />
@@ -354,18 +358,18 @@
       <FileName>Interfaces\IMovable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="PirateGame.Interfaces.IUpgradable">
-    <Position X="17" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Interfaces\IUpgradable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="PirateGame.Interfaces.IDrawableCustom">
     <Position X="14.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Interfaces\IDrawableCustom.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PirateGame.Interfaces.IUpgrade">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUpgrade.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="PirateGame.Enums.Hull" Collapsed="true">
