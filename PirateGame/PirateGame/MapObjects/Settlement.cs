@@ -17,7 +17,7 @@ namespace PirateGame.MapObjects
         private List<PlayerShip> shipsOnDock = new List<PlayerShip>(); // this field remains hidden as it will be used only within methods of the class       
 
         // constructors
-        public Settlement(ContentManager content, string texture, int x, int y, int width, int height)
+        protected Settlement(ContentManager content, string texture, int x, int y, int width, int height)
             : this(1, 0, 1, Coutries.Somalia, content, texture, x, y, width, height)
         { }
 

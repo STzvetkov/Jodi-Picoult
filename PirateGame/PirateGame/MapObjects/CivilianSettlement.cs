@@ -17,18 +17,30 @@ namespace PirateGame.MapObjects
 
         // constructors
 
-        public CivilianSettlement (ContentManager content, string texture, int x, int y, int width, int height)
-            : base(content, texture, x, y, width, height)
-        {}
-        // methods
-        public virtual void PoduceGoods ()
+        protected CivilianSettlement(int startPopulation, int initialWealth, int defence, Coutries stCountry, 
+                                     ContentManager content, string texture, int x, int y, int width, int height)
+            : base(startPopulation, initialWealth, defence, stCountry, content, texture, x, y, width, height)
         {
-            this.GoodsAmount += this.ProductionRate;
+            this.GoodsAmount = 0;
+            this.ProductionRate = 10;
+            this.StorageCapacity = 1000;
+            this.ProductionType = ProductionGoods.Cereals;
         }
-
+        protected CivilianSettlement(int initialGoodsAmount, int initialProductionRate, int initialStorageCapacity,
+            int startPopulation, int initialWealth, int defence, Coutries stCountry,
+            ContentManager content, string texture, int x, int y, int width, int height)
+            : this(startPopulation, initialWealth, defence, stCountry, content, texture, x, y, width, height)
+        {
+            this.GoodsAmount = initialGoodsAmount;
+            this.ProductionRate = initialProductionRate;
+            this.StorageCapacity = initialStorageCapacity;
+            this.ProductionType = ProductionGoods.TradingGoods;
+        }
+       
         // properties
-        public ProductionGoods productionType { get; private set; }
-        public int ProductionRate { get; private set; }
+        public ProductionGoods ProductionType { get; protected set; }
+        public int ProductionRate { get; protected set; }
+        public int StorageCapacity { get; protected set; }
 
         public int GoodsAmount
         {
@@ -37,8 +49,22 @@ namespace PirateGame.MapObjects
             {
                 if (value < 0)
                     throw new IndexOutOfRangeException("Sorage can not contain negative amount of goods.");
+                else
+                    if (value > this.StorageCapacity)
+                    {
+                        this.goodsAmount = this.StorageCapacity;
+                        throw new IndexOutOfRangeException("Sorage is filled to its capacity.");
+                    }
+
                 this.goodsAmount = value;
             }
+        }
+
+        // methods
+        public virtual void PoduceGoods()
+        {
+            int accumulatedAmount = this.GoodsAmount + this.ProductionRate;
+            this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
         }
     }
 }

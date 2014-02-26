@@ -39,6 +39,7 @@ namespace PirateGame.Enums
         Fish, 
         Oil, 
         Fruits, 
-        Cereals 
+        Cereals, 
+        TradingGoods
     };
 }

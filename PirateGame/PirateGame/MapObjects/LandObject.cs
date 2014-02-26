@@ -13,7 +13,7 @@ namespace PirateGame.MapObjects
     {
 
         // constructors
-        public LandObject(ContentManager content, string texture, int x, int y, int width, int height) : base(content, texture, x, y, width, height)
+        protected LandObject(ContentManager content, string texture, int x, int y, int width, int height) : base(content, texture, x, y, width, height)
         {
             
         }
