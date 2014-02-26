@@ -28,11 +28,12 @@ namespace PirateGame.MapObjects
 
         // methods
 
-        public override void PoduceGoods()
+        public override void ProduceGoods(GameTime gameTime)
         {
             if (this.OilDeposit > 0)
             {
-                base.PoduceGoods();
+                base.ProduceGoods(gameTime);
+                if(CheckTime(gameTime, 5))
                 this.OilDeposit -= this.ProductionRate;
             }
         }

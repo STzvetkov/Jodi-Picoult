@@ -10,14 +10,15 @@ using PirateGame.Enums;
 namespace PirateGame.MapObjects
 {
 
-    public abstract class CivilianSettlement:Settlement
+    public abstract class CivilianSettlement : Settlement
     {
         // fields
         private int goodsAmount;
+        protected double produceTime;
 
         // constructors
 
-        protected CivilianSettlement(int startPopulation, int initialWealth, int defence, Coutries stCountry, 
+        protected CivilianSettlement(int startPopulation, int initialWealth, int defence, Coutries stCountry,
                                      ContentManager content, string texture, int x, int y, int width, int height)
             : base(startPopulation, initialWealth, defence, stCountry, content, texture, x, y, width, height)
         {
@@ -33,10 +34,11 @@ namespace PirateGame.MapObjects
         {
             this.StorageCapacity = initialStorageCapacity;
             this.GoodsAmount = initialGoodsAmount;
-            this.ProductionRate = initialProductionRate;            
+            this.ProductionRate = initialProductionRate;
             this.ProductionType = ProductionGoods.TradingGoods;
+            this.produceTime = 0;
         }
-       
+
         // properties
         public ProductionGoods ProductionType { get; protected set; }
         public int ProductionRate { get; protected set; }
@@ -45,7 +47,7 @@ namespace PirateGame.MapObjects
         public int GoodsAmount
         {
             get { return this.goodsAmount; }
-            set 
+            set
             {
                 if (value < 0)
                     throw new IndexOutOfRangeException("Sorage can not contain negative amount of goods.");
@@ -61,10 +63,21 @@ namespace PirateGame.MapObjects
         }
 
         // methods
-        public virtual void PoduceGoods()
+        public virtual void ProduceGoods(GameTime gameTime)
         {
-            int accumulatedAmount = this.GoodsAmount + this.ProductionRate;
-            this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+            if (CheckTime(gameTime, 5))
+            {
+                int accumulatedAmount = this.GoodsAmount + this.ProductionRate;
+                this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+            }
+        }
+
+        protected bool CheckTime(GameTime gameTime, double interval)
+        { 
+            bool isTime = Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.produceTime) > interval;
+            if(isTime)
+                this.produceTime = gameTime.TotalGameTime.TotalSeconds;
+            return isTime;
         }
     }
 }

@@ -26,10 +26,14 @@ namespace PirateGame.MapObjects
         public int FishPopulationFactor { get; private set; }
 
         // methods:
-        public override void PoduceGoods()
+        public override void ProduceGoods(GameTime gameTime)
         {
-            int accumulatedAmount = this.GoodsAmount + this.ProductionRate*this.FishPopulationFactor;
-            this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+            if (CheckTime(gameTime, 10))
+            {
+                int accumulatedAmount = this.GoodsAmount + this.ProductionRate * this.FishPopulationFactor;
+                this.GoodsAmount = accumulatedAmount <= this.StorageCapacity ? accumulatedAmount : this.StorageCapacity;
+                this.produceTime = gameTime.TotalGameTime.TotalSeconds;
+            }
         }
 
     }
