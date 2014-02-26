@@ -127,6 +127,9 @@
     <Content Include="Content\StoneBackgroundHorizontal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\trade_center.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\waterMap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

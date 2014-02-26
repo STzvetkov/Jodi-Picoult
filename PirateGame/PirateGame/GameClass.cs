@@ -33,6 +33,7 @@ namespace PirateGame
         private Continent continent2;
         private Continent continent3;
         private FishingVillage fishingVillage1;
+        private TradeCenter tradeCenter1;
         private List<PirateGame.Interfaces.IDrawableCustom> continents;
         private List<string> messages;
         private Popup p;
@@ -122,7 +123,11 @@ namespace PirateGame
             };
             // add fishing village
             this.fishingVillage1 = new FishingVillage(2, 200, 10, 10000, 150, 1000, 30, Coutries.Tanzania,
-                                                      this.Content, "fishing_village", 300, 220, 128, 128);
+                                                      this.Content, "fishing_village", 500, 100, 100, 100);
+            // add trade center
+            this.tradeCenter1 = new TradeCenter(5000, 50, 100000, 800, 6000, 50, Coutries.Yemen,
+                                                this.Content, "trade_center", 600, 600, 128, 128);
+
             this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
                 this.continent1,
@@ -171,6 +176,10 @@ namespace PirateGame
                     else
                     {
                         this.p.IsVisible = false;
+                    }
+                    if (this.newKBState.IsKeyDown(Keys.M) && this.oldKBState.IsKeyUp(Keys.M)) // Open main menu
+                    {
+                        this.mainMenu.Show();
                     }
                     
                     if (this.newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
