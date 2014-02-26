@@ -5,8 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using PirateGame.Ship;
 using PirateGame.Enums;
+using PirateGame.Ships;
 
 namespace PirateGame.MapObjects
 {

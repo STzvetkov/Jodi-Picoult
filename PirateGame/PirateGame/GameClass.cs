@@ -10,7 +10,7 @@ using PirateGame.Enums;
 using PirateGame.Interfaces;
 using PirateGame.MapObjects;
 using PirateGame.Popups;
-using PirateGame.Ship;
+using PirateGame.Ships;
 using PirateGame.UserInterface;
 
 #endregion

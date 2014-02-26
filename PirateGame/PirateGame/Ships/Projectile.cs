@@ -4,8 +4,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using PirateGame.Interfaces;
+using PirateGame.Ships;
 
-namespace PirateGame.Ship
+namespace PirateGame.Ships
 {
     public class Projectile : IDrawableCustom
     {
