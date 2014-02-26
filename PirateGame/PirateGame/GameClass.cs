@@ -117,7 +117,7 @@ namespace PirateGame
             healthBar = new HealthBarr(Content);
             this.npcs = new List<NpcShip>
             {
-                new NpcShip(this.Content,"pirate_ship_npc1",300,200),
+                new NpcShip(this.Content,"pirate_ship_npc1",300,200,new Vector2(500,100)),
                 new NpcShip(this.Content,"pirate_ship_npc1",500,300),
                 new NpcShip(this.Content,"pirate_ship_npc1",400,400)
             };

@@ -14,8 +14,20 @@ namespace PirateGame.Ship
         private static Random rnd;
         private double time;
         private MoveAction handler;
+        private Vector2 destination;
+        private float speed = 3f;
+        private bool reached;
 
-        public NpcShip(ContentManager content, string texture, int x, int y) : base(content, texture, x, y)
+        public NpcShip(ContentManager content, string texture, int x, int y, Vector2 destination) : base(content, texture, x, y)
+        {
+            this.time = 0;
+            this.handler = new MoveAction(this.MoveRight);
+            this.IsInCombat = false;
+            this.destination = destination;
+        }
+
+        public NpcShip(ContentManager content, string texture, int x, int y)
+            : base(content, texture, x, y)
         {
             this.time = 0;
             this.handler = new MoveAction(this.MoveRight);
@@ -35,6 +47,33 @@ namespace PirateGame.Ship
                     gameState = GameState.Combat;
                     this.IsInCombat = true;
                 }
+                if(destination.X!=0 && destination.Y!=0)
+                {
+                    if(this.rectangle.X!=destination.X && this.rectangle.Y!=destination.Y && reached==false)
+                    {
+                        Vector2 trajectory = destination - this.initialCoordinates;
+                        trajectory.Normalize();
+                        this.rectangle.X += (int)(trajectory.X * speed);
+                        this.rectangle.Y += (int)(trajectory.Y * speed);
+                    }
+                    else
+                    {
+                        reached = true;
+                        if(reached)
+                        {
+                            Vector2 trajectory = this.initialCoordinates - destination;
+                            trajectory.Normalize();
+                            this.rectangle.X += (int)(trajectory.X * speed);
+                            this.rectangle.Y += (int)(trajectory.Y * speed);
+                            if(this.rectangle.X==this.initialCoordinates.X && this.rectangle.Y==this.initialCoordinates.Y)
+                            {
+                                reached = false;
+                            }
+                        }
+                    }
+                    
+                }
+                
             }
             if (gameState == GameState.Combat)
             {

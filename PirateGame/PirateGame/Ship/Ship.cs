@@ -18,13 +18,13 @@ namespace PirateGame.Ship
 
         private Vector2 speed;
 
-        private Rectangle rectangle;
+        protected Rectangle rectangle;
 
         private ContentManager content;
 
         private double fireTime;
 
-        private Vector2 initialCoordinates;
+        protected Vector2 initialCoordinates;
 
         protected Ship(ContentManager content, string texture, int x, int y)
         {
