@@ -41,6 +41,7 @@
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Ship\NpcShip.cs" />
     <Compile Include="Ship\Projectile.cs" />
+    <Compile Include="UserInterface\HealthBarr.cs" />
     <Compile Include="UserInterface\Inventory.cs" />
     <Compile Include="UserInterface\HealthBar.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
