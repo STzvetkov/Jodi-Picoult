@@ -19,7 +19,7 @@ namespace PirateGame
 {
     /// <summary>
     /// This is the main type for your game
-    /// </summary>
+    /// </summary>con1
     public class GameClass : Game
     {
         private GameState gameState;
@@ -32,6 +32,7 @@ namespace PirateGame
         private Continent continent1;
         private Continent continent2;
         private Continent continent3;
+        private FishingVillage fishingVillage1;
         private List<PirateGame.Interfaces.IDrawableCustom> continents;
         private List<string> messages;
         private Popup p;
@@ -117,6 +118,9 @@ namespace PirateGame
                 new NpcShip(this.Content,"pirate_ship_npc1",500,300),
                 new NpcShip(this.Content,"pirate_ship_npc1",400,400)
             };
+            // add fishing village
+            this.fishingVillage1 = new FishingVillage(2, 200, 10, 10000, 150, 1000, 30, Coutries.Tanzania,
+                                                      this.Content, "fishing_village", 300, 220, 128, 128);
             this.continents = new List<PirateGame.Interfaces.IDrawableCustom>
             {
                 this.continent1,
