@@ -61,6 +61,11 @@ namespace PirateGame.Ship
 
         public Hull Hull { get; set; }
 
+        public void ResetHitpoints()
+        {
+            this.Hitpoints = MaxHitpoints;
+        }
+
         public Point CurrentPosition
         {
             get

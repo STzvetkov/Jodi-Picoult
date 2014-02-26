@@ -9,7 +9,7 @@ using PirateGame.Interfaces;
 
 namespace PirateGame.Ship
 {
-    internal class NpcShip : Ship, IDrawableCustom
+    public class NpcShip : Ship, IDrawableCustom, IDestroyable
     {
         private static Random rnd;
         private double time;
@@ -62,7 +62,14 @@ namespace PirateGame.Ship
                         this.time = gameTime.TotalGameTime.TotalSeconds;
                         break;
                     case 2:
-                        this.handler = new MoveAction(this.MoveDown);
+                        if(this.Rectangle.Bottom>=GlobalConstants.WINDOW_HEIGHT || playership.Rectangle.Top-this.Rectangle.Bottom<=50)
+                        {
+                            this.handler = new MoveAction(this.MoveUp);
+                        }
+                        else
+                        {
+                            this.handler = new MoveAction(this.MoveDown);
+                        } 
                         this.time = gameTime.TotalGameTime.TotalSeconds;
                         break;
                     case 3:

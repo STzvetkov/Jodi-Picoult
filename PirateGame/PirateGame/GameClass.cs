@@ -38,6 +38,7 @@ namespace PirateGame
         private KeyboardState newKBState;
         private bool flag = false;
         private List<NpcShip> npcs;
+        private SpriteFont gameFont;
         
         //Menu system
         private Menu mainMenu;
@@ -103,6 +104,7 @@ namespace PirateGame
         /// </summary>
         protected override void LoadContent()
         {
+            this.gameFont = Content.Load<SpriteFont>("Arial");
             this.waterMapTexture = this.Content.Load<Texture2D>("waterMap");
             this.watermapRect = new Rectangle(0, 0, GlobalConstants.WINDOW_WIDTH, GlobalConstants.WINDOW_HEIGHT);
             this.continent1 = new Continent(this.Content,"con1",500,100,250,250);
@@ -148,9 +150,12 @@ namespace PirateGame
         {
             switch (this.gameState)
             {
+                
                 case GameState.FreeRoam:
                     this.newKBState = Keyboard.GetState();
-                    
+
+                    this.playerShip.ResetHitpoints();
+
                     bool mouseOverShip = this.playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
                     
                     if (mouseOverShip || this.newKBState.IsKeyDown(Keys.LeftControl))
@@ -192,8 +197,17 @@ namespace PirateGame
                     }
                     this.playerShip.Update(this.npcs.Find(x => x.IsInCombat), ref this.gameState, gameTime);
                     this.npcs.Find(x => x.IsInCombat).Update(this.playerShip, ref this.gameState, gameTime);
+                    if(this.playerShip.IsDestroyed)
+                    {
+                        gameState = GameState.GameOver;
+                    }
                     break;
                 case GameState.GameOver:
+                    this.newKBState = Keyboard.GetState();
+                    if (this.newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
+                    {
+                        this.mainMenu.Show();
+                    }
                     break;
                 case GameState.YouWin:
                     break;
@@ -245,6 +259,7 @@ namespace PirateGame
                     this.npcs.Find(x => x.IsInCombat).Draw(this.spriteBatch);
                     break;
                 case GameState.GameOver:
+                    spriteBatch.DrawString(this.gameFont, "You got sunk!", new Vector2(GlobalConstants.WINDOW_WIDTH/2-50,GlobalConstants.WINDOW_HEIGHT / 2), Color.Red);
                     break;
                 case GameState.YouWin:
                     break;
@@ -319,7 +334,15 @@ namespace PirateGame
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    this.playerShip.Move(Keys.Up, drawables);
+                    if(gameState==GameState.Combat)
+                    {
+                        if (this.playerShip.Rectangle.Top - npcs.Find(x => x.IsInCombat).Rectangle.Bottom >= 50)
+                            this.playerShip.Move(Keys.Up, drawables);
+                    }
+                    else
+                    {
+                        this.playerShip.Move(Keys.Up, drawables);
+                    }
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
