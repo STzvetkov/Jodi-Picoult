@@ -35,8 +35,8 @@ namespace PirateGame.Ship
             this.Weapons = Weapons.Basic;
             this.Hull = Hull.Basic;
             this.IsDestroyed = false;
-            this.Hitpoints = MaxHitpoints;
-            this.Damage = InitialDamage;
+            this.Hitpoints = MaxHitpoints*(int)this.Hull;
+            this.Damage = InitialDamage*(int)this.Weapons;
             this.Bullets = new List<Projectile>();
             this.fireTime = 0;
             this.initialCoordinates.X = x;

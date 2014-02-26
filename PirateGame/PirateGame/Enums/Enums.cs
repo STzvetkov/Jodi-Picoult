@@ -14,13 +14,13 @@ namespace PirateGame.Enums
     }
     public enum Hull
     {
-        Basic,
+        Basic=1,
         Reinforced,
         Steel
     }
     public enum Weapons
     {
-        Basic,
+        Basic=1,
         Advanced,
         Shredder
     }
