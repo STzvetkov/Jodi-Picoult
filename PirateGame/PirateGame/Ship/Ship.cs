@@ -22,7 +22,7 @@ namespace PirateGame.Ship
 
         private ContentManager content;
 
-        private double fireTime;
+        protected double fireTime;
 
         protected Vector2 initialCoordinates;
 
@@ -74,7 +74,7 @@ namespace PirateGame.Ship
             }
         }
 
-        public int Hitpoints { get; private set; }
+        public int Hitpoints { get; protected set; }
 
         public bool IsDestroyed { get; private set; }
 

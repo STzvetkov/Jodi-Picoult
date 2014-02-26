@@ -126,7 +126,8 @@ namespace PirateGame
             {
                 new NpcShip(this.Content,"pirate_ship_npc1",300,200,new Vector2(500,100)),
                 new NpcShip(this.Content,"pirate_ship_npc1",500,300),
-                new NpcShip(this.Content,"pirate_ship_npc1",400,400,new Vector2(210,520))
+                new NpcShip(this.Content,"pirate_ship_npc1",400,400,new Vector2(210,520)),
+                new NpcShip(this.Content,"big_ship",570,490,100,100,400)
             };
             // add fishing village
             this.fishingVillage1 = new FishingVillage(2, 200, 10, 10000, 150, 1000, 30, Coutries.Tanzania,
@@ -200,6 +201,7 @@ namespace PirateGame
             {
                 
                 case GameState.FreeRoam:
+                    flag = false;
                     this.newKBState = Keyboard.GetState();
 
                     // add production of goods
@@ -258,7 +260,7 @@ namespace PirateGame
                     this.UpdateMove(this.continents);
                     
                     this.npcs.RemoveAll(x => x.IsDestroyed);
-                    for (int i = this.npcs.Count - 1; i >= 0; i--)
+                    for (int i = 0; i < npcs.Count; i++)
                     {
                         this.npcs[i].Update(this.playerShip, ref this.gameState, gameTime);
                     }
@@ -272,7 +274,7 @@ namespace PirateGame
                         this.playerShip.AdjustPos(300, 500);
                         this.flag = true;
                     }
-                    var ships = this.npcs.FindAll(x => x.IsInCombat = true);
+                    var ships = this.npcs.FindAll(x => x.IsInCombat == true);
                     this.UpdateMove(ships.ConvertAll<IDrawableCustom>(x => x as IDrawableCustom));
                     if (Keyboard.GetState().IsKeyDown(Keys.Space))
                     {
