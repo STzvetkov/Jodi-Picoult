@@ -5,6 +5,13 @@ using System.Text;
 
 namespace PirateGame.Enums
 {
+    public enum GameState
+    {
+        FreeRoam,
+        Combat,
+        GameOver,
+        YouWin
+    }
     public enum Hull
     {
         Basic,

@@ -53,7 +53,6 @@
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
 
             // If draw rectangle isn't set, set it to the middle of the window
             if (this.Rectangle.IsEmpty)
@@ -82,7 +81,6 @@
                 itemPosition.X += this.HighlightTexture.Width + Inventory.ItemSpacing;
             }
 
-            spriteBatch.End();
         }
 
 

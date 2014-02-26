@@ -39,6 +39,8 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="GameClass.cs" />
     <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Ship\NpcShip.cs" />
+    <Compile Include="Ship\Projectile.cs" />
     <Compile Include="UserInterface\Inventory.cs" />
     <Compile Include="UserInterface\HealthBar.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
@@ -98,6 +100,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\pirate_ship.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\pirate_ship_npc1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Projectile.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\ship_popup.png">

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Content;
-using PirateGame;
 using PirateGame.Interfaces;
 using PirateGame.Stuff;
 
 namespace PirateGame.Ship
 {
-    public class PlayerShip : Ship,IUpgradable
+    public class PlayerShip : Ship, IUpgradable
     {
         private List<Upgrade> upgrades;
 
@@ -16,16 +15,12 @@ namespace PirateGame.Ship
         {
             this.upgrades = new List<Upgrade>();
         }
+
         public void Upgrade(Upgrade upg)
         {
             this.upgrades.Add(upg);
-            Actualize();
         }
 
-        private void Actualize()
-        {
-            
-        }
         public Upgrade[] GetUpgrades()
         {
             // TODO: Implement this method
