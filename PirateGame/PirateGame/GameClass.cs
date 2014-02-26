@@ -36,8 +36,14 @@ namespace PirateGame
         private TradeCenter tradeCenter1;
         private MilitaryPort militaryPort1;
         private List<PirateGame.Interfaces.IDrawableCustom> continents;
-        private List<string> messages;
-        private Popup p;
+        private List<string> shipMessages;
+        private List<string> fishingMessages;
+        private List<string> tradeMessages;
+        private List<string> militaryMessages;
+        private Popup shipPopup;
+        private Popup fishingPopup;
+        private Popup tradePopup;
+        private Popup militaryPopup;
         private KeyboardState newKBState;
         private bool flag = false;
         private List<NpcShip> npcs;
@@ -137,14 +143,42 @@ namespace PirateGame
                 this.continent2,
                 this.continent3,
             };
-            this.messages = new List<string>
+            this.shipMessages = new List<string>
             {
                 string.Format("Hull:{0}", this.playerShip.Hull),
                 string.Format("Weapons:{0}", this.playerShip.Weapons),
                 string.Format("Hit Points:{0}", this.playerShip.Hitpoints),
                 string.Format("Damage:{0}",this.playerShip.Damage)
             };
-            this.p = new Popup(this.Content, "ship_popup", "Arial", this.messages, this.playerShip);
+
+            this.fishingMessages = new List<string>
+            {
+                "Fishing Village",
+                string.Format("Population:{0}", this.fishingVillage1.Population),
+                string.Format("Wealth:{0}", this.fishingVillage1.Wealth),
+                string.Format("Defence Power:{0}", this.fishingVillage1.DefencePower)
+            };
+
+            this.tradeMessages = new List<string>
+            {
+                "Trade Center",
+                string.Format("Population:{0}", this.tradeCenter1.Population),
+                string.Format("Wealth:{0}", this.tradeCenter1.Wealth),
+                string.Format("Defence Power:{0}", this.tradeCenter1.DefencePower)
+            };
+
+            this.militaryMessages = new List<string>
+            {
+                "Military Port",
+                string.Format("Population:{0}", this.militaryPort1.Population),
+                string.Format("Wealth:{0}", this.militaryPort1.Wealth),
+                string.Format("Defence Power:{0}", this.militaryPort1.DefencePower)
+            };
+
+            this.shipPopup = new Popup(this.Content, "popup_background", "Arial", this.shipMessages, this.playerShip);
+            this.fishingPopup = new Popup(this.Content, "popup_background", "Arial", this.fishingMessages, this.fishingVillage1);
+            this.tradePopup = new Popup(this.Content, "popup_background", "Arial", this.tradeMessages, this.tradeCenter1);
+            this.militaryPopup = new Popup(this.Content, "popup_background", "Arial", this.militaryMessages, this.militaryPort1);
         }
         
         /// <summary>
@@ -175,14 +209,41 @@ namespace PirateGame
                     this.playerShip.ResetHitpoints();
 
                     bool mouseOverShip = this.playerShip.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+                    bool mouseOverFishing = this.fishingVillage1.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+                    bool mouseOverTrade = this.tradeCenter1.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+                    bool mouseOverMilitary = this.militaryPort1.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
                     
                     if (mouseOverShip || this.newKBState.IsKeyDown(Keys.LeftControl))
                     {
-                        this.p.IsVisible = true;
+                        this.shipPopup.IsVisible = true;
                     }
                     else
                     {
-                        this.p.IsVisible = false;
+                        this.shipPopup.IsVisible = false;
+                    }
+                    if (mouseOverFishing || this.newKBState.IsKeyDown(Keys.LeftControl))
+                    {
+                        this.fishingPopup.IsVisible = true;
+                    }
+                    else
+                    {
+                        this.fishingPopup.IsVisible = false;
+                    }
+                    if (mouseOverTrade || this.newKBState.IsKeyDown(Keys.LeftControl))
+                    {
+                        this.tradePopup.IsVisible = true;
+                    }
+                    else
+                    {
+                        this.tradePopup.IsVisible = false;
+                    }
+                    if (mouseOverMilitary || this.newKBState.IsKeyDown(Keys.LeftControl))
+                    {
+                        this.militaryPopup.IsVisible = true;
+                    }
+                    else
+                    {
+                        this.militaryPopup.IsVisible = false;
                     }
                     if (this.newKBState.IsKeyDown(Keys.M) && this.oldKBState.IsKeyUp(Keys.M)) // Open main menu
                     {
@@ -259,7 +320,10 @@ namespace PirateGame
                     this.tradeCenter1.Draw(spriteBatch);
                     this.militaryPort1.Draw(spriteBatch);
                     this.playerShip.Draw(this.spriteBatch);
-                    this.p.Draw(this.spriteBatch);
+                    this.shipPopup.Draw(this.spriteBatch);
+                    this.fishingPopup.Draw(this.spriteBatch);
+                    this.tradePopup.Draw(this.spriteBatch);
+                    this.militaryPopup.Draw(this.spriteBatch);
                     foreach (var item in this.npcs)
                     {
                         item.Draw(this.spriteBatch);
