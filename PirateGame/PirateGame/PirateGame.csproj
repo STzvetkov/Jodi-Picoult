@@ -48,7 +48,7 @@
     <Compile Include="Interfaces\IDestroyable.cs" />
     <Compile Include="Interfaces\IDrawableCustom.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
-    <Compile Include="Interfaces\IUpgradable.cs" />
+    <Compile Include="Interfaces\IUpgrade.cs" />
     <Compile Include="MapObjects\Airfield.cs" />
     <Compile Include="MapObjects\CivilianSettlement.cs" />
     <Compile Include="MapObjects\Continent.cs" />

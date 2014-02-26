@@ -11,6 +11,7 @@ namespace PirateGame.Stuff
     {
         public WeaponUpgrade(ContentManager content, string font, Vector2 position, string text) : base(content, font, position, text)
         {
+
         }
     }
 }

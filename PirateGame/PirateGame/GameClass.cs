@@ -296,6 +296,10 @@ namespace PirateGame
                         this.playerShip.Fire(gameTime);
                     }
                     this.playerShip.Update(this.npcs.Find(x => x.IsInCombat), ref this.gameState, gameTime);
+                    if(this.npcs.RemoveAll(x=>x.IsDestroyed==true)>0)
+                    {
+                        break;
+                    }
                     this.npcs.Find(x => x.IsInCombat).Update(this.playerShip, ref this.gameState, gameTime);
                     if(this.playerShip.IsDestroyed)
                     {

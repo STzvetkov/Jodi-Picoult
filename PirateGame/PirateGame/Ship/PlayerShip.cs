@@ -7,7 +7,7 @@ using PirateGame.Stuff;
 
 namespace PirateGame.Ship
 {
-    public class PlayerShip : Ship, IUpgradable
+    public class PlayerShip : Ship
     {
         private List<Upgrade> upgrades;
 

@@ -176,15 +176,16 @@ namespace PirateGame.Ship
 
         public void TakeDamage(int damageCaused)
         {
-            this.Hitpoints -= damageCaused;
+              this.Hitpoints -= damageCaused;
             this.IsDestroyed = this.Hitpoints <= 0;
         }
 
         public void Fire(GameTime gameTime)
         {
-            if (Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.fireTime) > 1)
+            if (Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.fireTime) > 3)
             {
-                this.Bullets.Add(new Projectile(this.content, this));this.fireTime = gameTime.TotalGameTime.TotalSeconds;
+                this.fireTime = gameTime.TotalGameTime.TotalSeconds;
+                 this.Bullets.Add(new Projectile(this.content, this));
             }
         }
 
@@ -228,22 +229,28 @@ namespace PirateGame.Ship
 
         public virtual void Update(Ship target, ref GameState gameState, GameTime gameTime)
         {
-            for (int i = this.Bullets.Count - 1; i >= 0; i--)
+            if (gameState==GameState.Combat)
             {
-                if (this.Bullets[i].Hit)
+                for (int i = this.Bullets.Count - 1; i >= 0; i--)
                 {
-                    target.TakeDamage(this.Damage);
-                    if(target.IsDestroyed)
+                    if (this.Bullets[i].Hit)
                     {
-                        this.rectangle.X = (int)target.initialCoordinates.X;
-                        this.rectangle.Y = (int)target.initialCoordinates.Y;
-                    }                  
-                    this.Bullets.RemoveAt(i);
+                        target.TakeDamage(this.Damage);
+                        if (target.IsDestroyed)
+                        {
+                            this.rectangle.X = (int)target.initialCoordinates.X;
+                            this.rectangle.Y = (int)target.initialCoordinates.Y;
+                            this.Bullets.Clear();
+                            gameState = GameState.FreeRoam;
+                            return;
+                        }
+                        this.Bullets.RemoveAt(i);
+                    }
                 }
-            }
-            foreach (var item in this.Bullets)
-            {
-                item.Update(target, this);
+                foreach (var item in this.Bullets)
+                {
+                    item.Update(target, this);
+                }
             }
         }
 

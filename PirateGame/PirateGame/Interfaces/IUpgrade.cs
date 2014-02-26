@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PirateGame.Stuff;
+using PirateGame.Ship;
 
 namespace PirateGame.Interfaces
 {
-    interface IUpgradable
+    interface IUpgrade
     {
-        void Upgrade(Upgrade upg);
+        void Upgrade(Ship.Ship ship);
 
-        Upgrade[] GetUpgrades();
     }
 }
