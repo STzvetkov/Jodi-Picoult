@@ -24,6 +24,16 @@
             this.Graphics = (GraphicsDeviceManager)Game.Services.GetService(typeof(GraphicsDeviceManager));
             this.SpriteBatch = (SpriteBatch)Game.Services.GetService(typeof(SpriteBatch));
 
+            if (this.Graphics == null)
+            {
+                this.Graphics = new GraphicsDeviceManager(this.Game);
+            }
+
+            if (this.SpriteBatch == null)
+            {
+                this.SpriteBatch = new SpriteBatch(this.Game.GraphicsDevice);
+            }
+
             base.Initialize();
         }
 
