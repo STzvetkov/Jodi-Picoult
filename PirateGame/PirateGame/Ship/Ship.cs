@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using PirateGame.Enums;
 using PirateGame.Interfaces;
-using PirateGame.MapObjects;
 
 namespace PirateGame.Ship
 {
@@ -15,20 +14,36 @@ namespace PirateGame.Ship
     {
         private const int MaxHitpoints = 200;
 
+        private const int InitialDamage = 40;
+
         private Vector2 speed;
 
         private Rectangle rectangle;
 
+        private ContentManager content;
+
+        private double fireTime;
+
+        private Vector2 initialCoordinates;
+
         protected Ship(ContentManager content, string texture, int x, int y)
         {
-            this.Texture = content.Load<Texture2D>(texture);
+            this.content = content;
+            this.Texture = this.content.Load<Texture2D>(texture);
             this.rectangle = new Rectangle(x,y,40,40);
             this.speed = new Vector2(1,1);
             this.Weapons = Weapons.Basic;
             this.Hull = Hull.Basic;
             this.IsDestroyed = false;
             this.Hitpoints = MaxHitpoints;
+            this.Damage = InitialDamage;
+            this.Bullets = new List<Projectile>();
+            this.fireTime = 0;
+            this.initialCoordinates.X = x;
+            this.initialCoordinates.Y = y;
         }
+
+        public List<Projectile> Bullets { get; set; }
 
         public Rectangle Rectangle
         {
@@ -38,8 +53,9 @@ namespace PirateGame.Ship
             }
         }
 
+        public int Damage { get; private set; }
+        
         public Texture2D Texture { get; private set; }
-
 
         public Weapons Weapons { get; set; }
 
@@ -53,9 +69,9 @@ namespace PirateGame.Ship
             }
         }
 
-        public int Hitpoints { get; private set;}
-        public bool IsDestroyed { get; private set; }
+        public int Hitpoints { get; private set; }
 
+        public bool IsDestroyed { get; private set; }
 
         public virtual void Move(Keys key, List<PirateGame.Interfaces.IDrawableCustom> drawables)
         {
@@ -70,7 +86,7 @@ namespace PirateGame.Ship
                         if (this.IsCollidedWith(drawable))
                         {
                             this.rectangle = initial;
-                            while(this.IsCollidedWith(drawable))
+                            while (this.IsCollidedWith(drawable))
                             {
                                 this.rectangle.X += 1;
                             }
@@ -146,7 +162,7 @@ namespace PirateGame.Ship
                          
                         break;
                 }
-                if(match)
+                if (match)
                 {
                     return;
                 }
@@ -157,6 +173,14 @@ namespace PirateGame.Ship
         {
             this.Hitpoints -= damageCaused;
             this.IsDestroyed = this.Hitpoints <= 0;
+        }
+
+        public void Fire(GameTime gameTime)
+        {
+            if (Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.fireTime) > 1)
+            {
+                this.Bullets.Add(new Projectile(this.content, this));this.fireTime = gameTime.TotalGameTime.TotalSeconds;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -195,6 +219,33 @@ namespace PirateGame.Ship
             }
 
             return false;
+        }
+
+        public virtual void Update(Ship target, ref GameState gameState, GameTime gameTime)
+        {
+            for (int i = this.Bullets.Count - 1; i >= 0; i--)
+            {
+                if (this.Bullets[i].Hit)
+                {
+                    target.TakeDamage(this.Damage);
+                    if(target.IsDestroyed)
+                    {
+                        this.rectangle.X = (int)target.initialCoordinates.X;
+                        this.rectangle.Y = (int)target.initialCoordinates.Y;
+                    }                  
+                    this.Bullets.RemoveAt(i);
+                }
+            }
+            foreach (var item in this.Bullets)
+            {
+                item.Update(target, this);
+            }
+        }
+
+        public void AdjustPos(int x, int y)
+        {
+            this.rectangle.X = x;
+            this.rectangle.Y = y;
         }
     }
 }
