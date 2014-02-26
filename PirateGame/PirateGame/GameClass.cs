@@ -239,6 +239,7 @@ namespace PirateGame
                     this.continent1.Draw(this.spriteBatch);
                     this.continent2.Draw(this.spriteBatch);
                     this.continent3.Draw(this.spriteBatch);
+                    this.fishingVillage1.Draw(spriteBatch);
                     this.playerShip.Draw(this.spriteBatch);
                     this.p.Draw(this.spriteBatch);
                     foreach (var item in this.npcs)
