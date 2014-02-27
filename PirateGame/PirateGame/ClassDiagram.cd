@@ -1,43 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PirateGame.GameClass">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="0.5" Y="2.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQMEEtQAAAAExBQAoCACBEBEQAQECyuJQAoAAQQAAQ=</HashCode>
+      <HashCode>AAQMEEtQAAAAExBQAoCACBEBEQAQECyuJQAoAAQAAAQ=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PirateGame.Program" Collapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+  <Class Name="PirateGame.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PirateGame.MapObjects.Continent">
-    <Position X="29.25" Y="6.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <InheritanceLine Type="PirateGame.MapObjects.LandObject" ManuallyRouted="true" FixedFromPoint="true">
-      <Path>
-        <Point X="31" Y="4.905" />
-        <Point X="31" Y="6.375" />
-        <Point X="30" Y="6.375" />
-        <Point X="30" Y="6.75" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MapObjects\Continent.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PirateGame.MapObjects.LandObject">
-    <Position X="30.25" Y="3.75" Width="1.5" />
+    <Position X="16" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -49,7 +34,11 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.MapObject">
-    <Position X="29.25" Y="0.5" Width="1.5" />
+    <Position X="19.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAIAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MapObjects\MapObject.cs</FileName>
@@ -57,7 +46,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.MapObjects.SeaObject">
-    <Position X="28" Y="3.75" Width="1.5" />
+    <Position X="21.25" Y="5.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -67,7 +56,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Wreckage">
-    <Position X="28" Y="5.25" Width="1.5" />
+    <Position X="21.25" Y="7.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -77,7 +66,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Menu">
-    <Position X="8.25" Y="8.75" Width="1.5" />
+    <Position X="5.5" Y="10.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -89,14 +78,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Airfield">
-    <Position X="37.5" Y="12.25" Width="1.5" />
+    <Position X="21.25" Y="12.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\Airfield.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.CivilianSettlement">
-    <Position X="27" Y="10" Width="1.5" />
+    <Position X="12.75" Y="10.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -108,7 +100,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.FishingVillage">
-    <Position X="24.75" Y="12.5" Width="1.5" />
+    <Position X="10.75" Y="12.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -119,7 +111,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.MilitaryPort">
-    <Position X="35.25" Y="12.25" Width="1.5" />
+    <Position X="19.25" Y="12.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -130,7 +122,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.MilitarySettlement">
-    <Position X="35.25" Y="9.75" Width="1.5" />
+    <Position X="19.25" Y="10.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -141,7 +133,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.Settlement">
-    <Position X="32" Y="6.5" Width="1.5" />
+    <Position X="14.75" Y="7.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -153,7 +145,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.OilPlatform">
-    <Position X="27" Y="12.5" Width="1.5" />
+    <Position X="12.75" Y="12.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -164,14 +156,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.PiratesHideout">
-    <Position X="33.25" Y="12.25" Width="1.5" />
+    <Position X="17.25" Y="12.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapObjects\PiratesHideout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.MapObjects.TradeCenter">
-    <Position X="29" Y="12.5" Width="1.5" />
+    <Position X="14.75" Y="12.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -182,7 +177,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.Popups.Popup">
-    <Position X="10.75" Y="3.25" Width="1.5" />
+    <Position X="0.5" Y="7.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -195,7 +190,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.UserInterface.UserInterfaceElement">
-    <Position X="5.75" Y="6" Width="1.5" />
+    <Position X="3" Y="7.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -208,7 +203,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.UserInterface.HealthBar">
-    <Position X="3.25" Y="8.75" Width="1.5" />
+    <Position X="0.5" Y="10.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -220,7 +215,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Inventory">
-    <Position X="5.75" Y="8.75" Width="1.5" />
+    <Position X="3" Y="10.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -232,7 +227,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.SelectableItem&lt;T&gt;">
-    <Position X="0.5" Y="8" Width="1.5" />
+    <Position X="4.25" Y="12.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -245,14 +240,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.GlobalConstants" Collapsed="true">
-    <Position X="3" Y="1" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GlobalConstants.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.Ships.PlayerShip">
-    <Position X="13.25" Y="9.75" Width="1.5" />
+    <Position X="5.5" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -263,7 +258,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.Ships.NpcShip">
-    <Position X="17.25" Y="9.75" Width="1.5" />
+    <Position X="3" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -283,7 +278,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.Ships.Ship">
-    <Position X="15.25" Y="6.75" Width="1.5" />
+    <Position X="4.25" Y="3" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -296,7 +291,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.Ships.Projectile" BaseTypeListCollapsed="true">
-    <Position X="8.75" Y="3.25" Width="1.5" />
+    <Position X="7.25" Y="3" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -306,10 +301,10 @@
       <HashCode>AAQAAAAAAAAAAgAAAAIAACAAAAAgAgAAgAIAAAAAAAA=</HashCode>
       <FileName>Ships\Projectile.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.Upgrades.Upgrade">
-    <Position X="23.25" Y="4.5" Width="1.5" />
+    <Position X="10.75" Y="3" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -321,7 +316,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.Upgrades.HullUpgrade">
-    <Position X="21.25" Y="6.75" Width="1.5" />
+    <Position X="8.75" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -332,7 +327,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PirateGame.Upgrades.WeaponUpgrade">
-    <Position X="23.25" Y="6.75" Width="1.5" />
+    <Position X="10.75" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -342,7 +337,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.Upgrades.CrewUpgrade">
-    <Position X="25.25" Y="6.75" Width="1.5" />
+    <Position X="12.75" Y="5.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -352,18 +347,18 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Decorator">
-    <Position X="10.5" Y="8.75" Width="1.5" />
+    <Position X="7.75" Y="10.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAwAAEAAAAAAIAAAEAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQAAAAAAAAAAwAAEAAAAAAIBAAEAAAAAAAAAAAEAAQ=</HashCode>
       <FileName>UserInterface\Decorator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.Frame">
-    <Position X="10.5" Y="10.75" Width="1.5" />
+    <Position X="7.75" Y="12.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -375,7 +370,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PirateGame.UserInterface.InvalidTextureException">
-    <Position X="8.25" Y="10.75" Width="1.5" />
+    <Position X="7.75" Y="7.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
@@ -386,29 +381,54 @@
       <FileName>UserInterface\InvalidTextureException.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PirateGame.MapObjects.Continent">
+    <Position X="17.25" Y="7.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapObjects\Continent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="PirateGame.UserInterface.MenuAccountant">
-    <Position X="8.25" Y="6" Width="1.5" />
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAACAAAAABAAAAIAAAAAAAA=</HashCode>
       <FileName>UserInterface\MenuAccountant.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Interface Name="PirateGame.Interfaces.ICollidable">
-    <Position X="14.75" Y="4.5" Width="1.5" />
+    <Position X="14.75" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICollidable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PirateGame.Interfaces.IDestroyable">
-    <Position X="19.25" Y="0.5" Width="1.5" />
+    <Position X="17" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Interfaces\IDestroyable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PirateGame.Interfaces.IMovable">
-    <Position X="14.75" Y="2.75" Width="1.5" />
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IMovable.cs</FileName>
@@ -416,55 +436,62 @@
   </Interface>
   <Interface Name="PirateGame.Interfaces.IDrawableCustom">
     <Position X="14.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Interfaces\IDrawableCustom.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PirateGame.Interfaces.IUpgrade">
-    <Position X="17" Y="0.5" Width="1.5" />
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IUpgrade.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="PirateGame.Enums.Hull" Collapsed="true">
-    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Position X="9" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAACAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="PirateGame.Enums.Weapons" Collapsed="true">
-    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Position X="10.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAACCAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="PirateGame.Enums.PopupPosition" Collapsed="true">
-    <Position X="6.5" Y="1.75" Width="1.5" />
+    <Position X="10.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="PirateGame.Enums.Coutries" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAACAAAAAAAAAAAAAAAQBAAAAAAQAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="PirateGame.Enums.ProductionGoods" Collapsed="true">
-    <Position X="3" Y="2.5" Width="1.5" />
+    <Position X="7.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAIAAAAAAAAQAAAAAAAAACAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="PirateGame.Enums.GameState" Collapsed="true">
-    <Position X="4.75" Y="1.75" Width="1.5" />
+    <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Enums\Enums.cs</FileName>
