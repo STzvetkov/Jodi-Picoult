@@ -17,7 +17,8 @@
         public HealthBar(Game game, Func<double> getHealthPercentDelegate)
             : base(game)
         {
-            this.Hide();                                                // Disable this UI Element
+            this.Enabled = false;                                       // Disable this UI Element
+            this.Visible = false;
             this.GetHealthPercentDelegate = getHealthPercentDelegate;   // Assign getHealth delegate
             this.currentHealth = this.GetHealth();                      // Get target health
 
@@ -112,6 +113,11 @@
         {
             // update internal state here
             base.Update(gameTime);
+
+            if (this.Enabled == false)
+            {
+                return;
+            }
 
             this.currentHealth = this.GetHealth();          // Get target health
         }

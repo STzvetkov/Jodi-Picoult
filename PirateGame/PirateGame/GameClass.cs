@@ -48,15 +48,15 @@ namespace PirateGame
         private bool flag = false;
         private List<NpcShip> npcs;
         private SpriteFont gameFont;
-        private HealthBarr healthBar;
         private Upgrade wUpgrade;
         private bool upgradeFlagWeapons = false;
         private bool upgradeFlagHull = false;
         private double upgradeTime = 0;
         
         //Menu system
-        private int openMenusCount;
-        private Menu mainMenu;
+        private MenuAccountant menus;
+        private UserInterfaceElement mainMenu;
+        private Texture2D UIFrameTexture;
         private List<UserInterfaceElement> UIElements;
         
         public GameClass() : base()
@@ -69,28 +69,7 @@ namespace PirateGame
             this.IsMouseVisible = true;
             
             this.UIElements = new List<UserInterfaceElement>();
-            this.mainMenu = new Menu(this, "Pirate Menu", this.OnOpenMenu, this.OnCloseMenu);
-            this.UIElements.Add(this.mainMenu);
-            
-            this.openMenusCount = 0;
-        }
-        
-        /// <summary>
-        /// Calculates if the game engine is allowed to run
-        /// </summary>
-        private bool EnableGameProcessing
-        {
-            get
-            {
-                if (this.openMenusCount == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
+            this.menus.openCount = 0;
         }
         
         /// <summary>
@@ -108,17 +87,7 @@ namespace PirateGame
             this.Services.AddService(typeof(SpriteBatch), this.spriteBatch);
             
             this.oldKBState = Keyboard.GetState();
-            
-            this.mainMenu.Items.Add(new SelectableItem<string>("Play", this.OnPlay));
-            this.mainMenu.Items.Add(new SelectableItem<string>("Test Inventory", this.OnInventoryTest));
-            this.mainMenu.Items.Add(new SelectableItem<string>("Test Health Bar", this.OnHealthBarTest));
-            this.mainMenu.Items.Add(new SelectableItem<string>("Quit", this.OnExit));
-            
-            for (int index = 0; index < this.UIElements.Count; index++)
-            {
-                this.UIElements[index].Initialize();
-            }
-            
+
             base.Initialize();
         }
         
@@ -135,7 +104,6 @@ namespace PirateGame
             this.continent2 = new Continent(this.Content, "con2", 40, 40, 300, 300);
             this.continent3 = new Continent(this.Content, "con3", 40, 300, 300, 300);
             this.playerShip = new PlayerShip(this.Content, "pirate_ship", GlobalConstants.WINDOW_WIDTH / 2, GlobalConstants.WINDOW_HEIGHT / 2);
-            this.healthBar = new HealthBarr(this.Content);
             this.npcs = new List<NpcShip>
             {
                 new NpcShip(this.Content,"pirate_ship_npc1",300,200,new Vector2(500,100)),
@@ -171,7 +139,7 @@ namespace PirateGame
                 "Fishing Village",
                 string.Format("Population:{0}", this.fishingVillage1.Population),
                 string.Format("Wealth:{0}", this.fishingVillage1.Wealth),
-                string.Format("Defence Power:{0}", this.fishingVillage1.DefencePower)
+                string.Format("Defense Power:{0}", this.fishingVillage1.DefencePower)
             };
             
             this.tradeMessages = new List<string>
@@ -179,7 +147,7 @@ namespace PirateGame
                 "Trade Center",
                 string.Format("Population:{0}", this.tradeCenter1.Population),
                 string.Format("Wealth:{0}", this.tradeCenter1.Wealth),
-                string.Format("Defence Power:{0}", this.tradeCenter1.DefencePower)
+                string.Format("Defense Power:{0}", this.tradeCenter1.DefencePower)
             };
             
             this.militaryMessages = new List<string>
@@ -187,18 +155,25 @@ namespace PirateGame
                 "Military Port",
                 string.Format("Population:{0}", this.militaryPort1.Population),
                 string.Format("Wealth:{0}", this.militaryPort1.Wealth),
-                string.Format("Defence Power:{0}", this.militaryPort1.DefencePower)
+                string.Format("Defense Power:{0}", this.militaryPort1.DefencePower)
             };
             
             this.shipPopup = new Popup(this.Content, "popup_background", "Arial", this.shipMessages, this.playerShip);
             this.fishingPopup = new Popup(this.Content, "popup_background", "Arial", this.fishingMessages, this.fishingVillage1);
             this.tradePopup = new Popup(this.Content, "popup_background", "Arial", this.tradeMessages, this.tradeCenter1);
             this.militaryPopup = new Popup(this.Content, "popup_background", "Arial", this.militaryMessages, this.militaryPort1);
-            
-            for (int index = 0; index < this.UIElements.Count; index++)
-            {
-                this.UIElements[index].LoadContent();
-            }
+
+            this.UIFrameTexture = this.Content.Load<Texture2D>("InventoryHighlight.png");
+
+            Menu main = new Menu(this, "Pirate Menu", menus.OnOpen, menus.OnClose);
+            main.Initialize();
+            main.LoadContent();
+            main.Items.Add(new SelectableItem<string>("Play", this.OnPlay));
+            main.Items.Add(new SelectableItem<string>("Test Inventory", this.OnInventoryTest));
+            main.Items.Add(new SelectableItem<string>("Test Health Bar", this.OnHealthBarTest));
+            main.Items.Add(new SelectableItem<string>("Quit", this.OnExit));
+            this.mainMenu = new Frame(main, this.UIFrameTexture, Color.Gray);
+            this.UIElements.Add(this.mainMenu);
         }
         
         /// <summary>
@@ -265,12 +240,8 @@ namespace PirateGame
                     {
                         this.militaryPopup.IsVisible = false;
                     }
-                    if (this.newKBState.IsKeyDown(Keys.M) && this.oldKBState.IsKeyUp(Keys.M)) // Open main menu
-                    {
-                        this.mainMenu.Show();
-                    }
-                    
-                    if (this.newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Open main menu
+                    if ((this.newKBState.IsKeyDown(Keys.M) && this.oldKBState.IsKeyUp(Keys.M)) ||   // Open main menu
+                        (this.newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape)))
                     {
                         this.mainMenu.Show();
                     }
@@ -331,7 +302,6 @@ namespace PirateGame
                 default:
                     break;
             }
-            this.healthBar.Update();
             
             for (int index = 0; index < this.UIElements.Count; index++)
             {
@@ -447,30 +417,9 @@ namespace PirateGame
                 this.UIElements[index].Draw(this.spriteBatch);
             }
             
-            this.healthBar.Draw(this.spriteBatch);
             this.spriteBatch.End();
             
             base.Draw(gameTime);
-        }
-        
-        /// <summary>
-        /// Open menu post processing
-        /// </summary>
-        /// <param name="menu">Menu</param>
-        /// <param name="e">Not used</param>
-        public void OnOpenMenu(object menu, EventArgs e = null)
-        {
-            this.openMenusCount += 1;
-        }
-        
-        /// <summary>
-        /// Close menu post processing
-        /// </summary>
-        /// <param name="menu">Menu</param>
-        /// <param name="e">Not used</param>
-        public void OnCloseMenu(object menu, EventArgs e = null)
-        {
-            this.openMenusCount -= 1;
         }
         
         /// <summary>
@@ -489,48 +438,44 @@ namespace PirateGame
         /// <param name="menuItem">Menu item</param>
         /// <param name="e">Not used</param>
         public void OnPlay(object menuItem, EventArgs e = null)
-        {
-            this.mainMenu.Hide();
-        }
+        { }
         
         private void OnInventoryTest(object menuItem, EventArgs e = null)
         {
-            this.mainMenu.Hide();
-            
-            Inventory test = new Inventory(this);
+            Inventory test = new Inventory(this, this.menus.OnOpen, this.menus.OnClose);
             test.Initialize();
             test.LoadContent();
             
             // TODO: remove the test
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnExit));
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent2, null));
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, this.OnExit));
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, null));
-            
-            this.UIElements.Add(test);
-            
-            test.Show();
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent2, this.OnPlay));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, this.OnPlay));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
+
+            Frame testFrame = new Frame(test, this.UIFrameTexture, Color.Gray);
+            testFrame.Show();
+
+            this.UIElements.Add(testFrame);
         }
         
         private void OnHealthBarTest(object menuItem, EventArgs e = null)
         {
-            this.mainMenu.Hide();                           // TODO: remove the test
-            
+            // TODO: remove the test
             HealthBar test = new HealthBar(this, HealthBar.UpdateHealthTest);
             test.Initialize();
             test.LoadContent();
             
             this.UIElements.Add(test);
             
-            test.Rectangle = new Rectangle(50, 50, 200, 50);
+            test.Rectangle = new Rectangle(50, 50, 100, 20);
             
             test.Show();
         }
         
         private void UpdateMove(List<IDrawableCustom> drawables)
         {
-            if (this.EnableGameProcessing)                 // Process the input if the menu is off
+            if (this.menus.AllClosed)                       // Process the input if the menu is off
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 {

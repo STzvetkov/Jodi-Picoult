@@ -41,7 +41,9 @@
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Ships\NpcShip.cs" />
     <Compile Include="Ships\Projectile.cs" />
-    <Compile Include="UserInterface\HealthBarr.cs" />
+    <Compile Include="UserInterface\Decorator.cs" />
+    <Compile Include="UserInterface\Frame.cs" />
+    <Compile Include="UserInterface\InvalidTextureException.cs" />
     <Compile Include="UserInterface\Inventory.cs" />
     <Compile Include="UserInterface\HealthBar.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Upgrades\HullUpgrade.cs" />
     <Compile Include="Upgrades\Upgrade.cs" />
     <Compile Include="Upgrades\WeaponUpgrade.cs" />
+    <Compile Include="UserInterface\MenuAccountant.cs" />
     <Compile Include="UserInterface\SelectableItem.cs" />
     <Compile Include="UserInterface\UserInterfaceElement.cs" />
   </ItemGroup>

@@ -6,15 +6,15 @@
 
     public abstract class UserInterfaceElement : DrawableGameComponent, PirateGame.Interfaces.IDrawableCustom
     {
-        protected event EventHandler showItemHandler;       // An event that notifies when the menu is shown
-        protected event EventHandler hideItemHandler;       // An event that notifies when the item is hidden
-
         protected UserInterfaceElement(Game game, EventHandler showItemHandler = null, EventHandler hideItemHandler = null)
             : base(game)
         {
-            this.showItemHandler = showItemHandler;
-            this.hideItemHandler = hideItemHandler;
+            this.ShowItemHandler = showItemHandler;
+            this.HideItemHandler = hideItemHandler;
         }
+
+        public event EventHandler ShowItemHandler;       // An event that notifies when the menu is shown
+        public event EventHandler HideItemHandler;       // An event that notifies when the item is hidden
 
         protected GraphicsDeviceManager Graphics { get; set; }
         protected SpriteBatch SpriteBatch { get; set; }
@@ -64,9 +64,9 @@
             this.Enabled = false;
             this.Visible = false;
 
-            if (hideItemHandler != null)
+            if (HideItemHandler != null)
             {
-                hideItemHandler(this, null);
+                HideItemHandler(this, null);
             }
         }
 
@@ -80,9 +80,9 @@
             this.Enabled = true;
             this.Visible = true;
 
-            if (showItemHandler != null)
+            if (ShowItemHandler != null)
             {
-                showItemHandler(this, null);
+                ShowItemHandler(this, null);
             }
         }
 

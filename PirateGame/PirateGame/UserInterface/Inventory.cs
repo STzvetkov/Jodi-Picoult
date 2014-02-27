@@ -22,7 +22,8 @@
         public Inventory(Game game, EventHandler showInventoryHandler = null, EventHandler hideInventoryHandler = null)
             : base(game, showInventoryHandler, hideInventoryHandler)
         {
-            this.Hide();                                                // Disable this UI Element
+            this.Enabled = false;                               // Disable this UI Element
+            this.Visible = false;
             this.Items = new List<SelectableItem<IDrawableCustom>>();   // Create the inventory list
             this.highlightIndex = 0;
 
@@ -97,6 +98,11 @@
         {
             base.Update(gameTime);
 
+            if (this.Enabled == false)
+            {
+                return;
+            }
+
             KeyboardState newKBState = Keyboard.GetState();
 
             if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Check for close menu
@@ -123,6 +129,7 @@
                 else if (newKBState.IsKeyDown(Keys.Enter) && this.oldKBState.IsKeyUp(Keys.Enter))
                 {
                     Items[this.highlightIndex].Select();
+                    this.Hide();
                 }
             }
 

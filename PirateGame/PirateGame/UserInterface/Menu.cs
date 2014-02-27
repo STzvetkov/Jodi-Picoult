@@ -25,7 +25,8 @@
         public Menu(Game game, string title, EventHandler showMenuHandler = null, EventHandler hideMenuHandler = null)
             : base(game, showMenuHandler, hideMenuHandler)
         {
-            this.Hide();                                        // Disable this UI Element
+            this.Enabled = false;                               // Disable this UI Element
+            this.Visible = false;
             this.Items = new List<SelectableItem<string>>();    // Create the menu list
             this.Title = title;
             this.highlightPosition = 0;
@@ -124,6 +125,11 @@
         {
             base.Update(gameTime);
 
+            if (this.Enabled == false)
+            {
+                return;
+            }
+
             KeyboardState newKBState = Keyboard.GetState();
 
             if (newKBState.IsKeyDown(Keys.Escape) && this.oldKBState.IsKeyUp(Keys.Escape))  // Check for close menu
@@ -150,6 +156,7 @@
                 else if (newKBState.IsKeyDown(Keys.Enter) && this.oldKBState.IsKeyUp(Keys.Enter))
                 {
                     Items[highlightPosition].Select();
+                    this.Hide();
                 }
             }
 

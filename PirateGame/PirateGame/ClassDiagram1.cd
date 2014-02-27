@@ -7,7 +7,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQMEEMQAAAAEwBAAoCACJEBMAAQEAyuJQIoAAQQAAY=</HashCode>
+      <HashCode>AAQMEEtQAAAAExBQAoCACBEBEQAQECyuJQAoAAQQAAQ=</HashCode>
       <FileName>GameClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -202,7 +202,7 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAwAAEAAAAAAACAAkgAAAQAIAAAAgAAQ=</HashCode>
+      <HashCode>AAAAAAAACAAAAwAAEAAAAAAACAAkAAAAQIIAAAAAAAQ=</HashCode>
       <FileName>UserInterface\UserInterfaceElement.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -253,6 +253,10 @@
   </Class>
   <Class Name="PirateGame.Ships.PlayerShip">
     <Position X="13.25" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Ships\PlayerShip.cs</FileName>
@@ -260,6 +264,11 @@
   </Class>
   <Class Name="PirateGame.Ships.NpcShip">
     <Position X="17.25" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="PirateGame.Ships.NpcShip.MoveAction" Collapsed="true">
         <TypeIdentifier>
@@ -288,6 +297,11 @@
   </Class>
   <Class Name="PirateGame.Ships.Projectile" BaseTypeListCollapsed="true">
     <Position X="8.75" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAIAACAAAAAgAgAAgAIAAAAAAAA=</HashCode>
       <FileName>Ships\Projectile.cs</FileName>
@@ -337,6 +351,48 @@
       <FileName>Upgrades\CrewUpgrade.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PirateGame.UserInterface.Decorator">
+    <Position X="10.5" Y="8.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAwAAEAAAAAAIAAAEAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>UserInterface\Decorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.UserInterface.Frame">
+    <Position X="10.5" Y="10.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAgAAAAAAAAACAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>UserInterface\Frame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PirateGame.UserInterface.InvalidTextureException">
+    <Position X="8.25" Y="10.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAA=</HashCode>
+      <FileName>UserInterface\InvalidTextureException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="PirateGame.UserInterface.MenuAccountant">
+    <Position X="8.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAACAAAAABAAAAIAAAAAAAA=</HashCode>
+      <FileName>UserInterface\MenuAccountant.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="PirateGame.Interfaces.ICollidable">
     <Position X="14.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
