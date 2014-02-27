@@ -1,20 +1,17 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using PirateGame.Ships;
-using PirateGame.Upgrades;
 
 namespace PirateGame.Upgrades
 {
-    class CrewUpgrade:Upgrade
+    internal class CrewUpgrade : Upgrade
     {
-        public CrewUpgrade(ContentManager content, string font, Vector2 position, string text, Ship ship)
-            : base(content, font, position, text, ship)
+        public CrewUpgrade(ContentManager content, string font, string text, Ship ship) : base(content, font, text, ship)
         {
         }
+
         public override void UpgradeShip()
         {
             // TODO: Implement this method

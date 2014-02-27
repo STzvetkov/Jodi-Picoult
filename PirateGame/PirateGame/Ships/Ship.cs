@@ -184,7 +184,7 @@ namespace PirateGame.Ships
 
         public void Fire(GameTime gameTime)
         {
-            if (Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.fireTime) > 3)
+            if (Math.Abs(gameTime.TotalGameTime.TotalSeconds - this.fireTime) > 1)
             {
                 this.fireTime = gameTime.TotalGameTime.TotalSeconds;
                  this.Bullets.Add(new Projectile(this.content, this));

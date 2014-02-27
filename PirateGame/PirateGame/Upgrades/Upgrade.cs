@@ -8,17 +8,19 @@ using PirateGame.Ships;
 
 namespace PirateGame.Upgrades
 {
-    public abstract class Upgrade:IUpgrade
+    public abstract class Upgrade : IUpgrade
     {
+        protected Ship ship;
+
         private SpriteFont font;
         private Vector2 position;
         private string text;
-        protected Ship ship;
 
-        public Upgrade(ContentManager content, string font, Vector2 position, string text, Ship ship)
+        public Upgrade(ContentManager content, string font, string text, Ship ship)
         {
             this.font = content.Load<SpriteFont>(font);
-            this.position = position;
+            this.position.X = ship.Rectangle.X;
+            this.position.Y = ship.Rectangle.Y-10;
             this.text = text;
             this.ship = ship;
         }
@@ -27,8 +29,8 @@ namespace PirateGame.Upgrades
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            UpgradeShip();
-            spriteBatch.DrawString(this.font, text, this.position, Color.Black);
+            spriteBatch.DrawString(this.font, this.text, this.position, Color.Red);
+            
         }
     }
 }
