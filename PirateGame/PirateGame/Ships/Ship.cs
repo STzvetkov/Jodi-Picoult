@@ -76,7 +76,7 @@ namespace PirateGame.Ships
             }
         }
 
-        public int Hitpoints { get; private set; }
+        public int Hitpoints { get; protected set; }
 
         public bool IsDestroyed { get; private set; }
 
@@ -178,7 +178,7 @@ namespace PirateGame.Ships
 
         public void TakeDamage(int damageCaused)
         {
-              this.Hitpoints -= damageCaused;
+              this.Hitpoints -= damageCaused/(int)this.Hull;
             this.IsDestroyed = this.Hitpoints <= 0;
         }
 

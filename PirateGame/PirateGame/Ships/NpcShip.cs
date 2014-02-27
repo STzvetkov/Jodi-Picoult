@@ -17,7 +17,7 @@ namespace PirateGame.Ships
         private double time;
         private MoveAction handler;
         private Vector2 destination;
-        private float speed = 2.0f;
+        private float speed = 1.5f;
         private bool reached;
 
         public NpcShip(ContentManager content, string texture, int x, int y, Vector2 destination) : base(content, texture, x, y)
@@ -45,6 +45,7 @@ namespace PirateGame.Ships
             this.rectangle = new Rectangle(x,y,width,height);
             this.Hull = Hull.Steel;
             this.Weapons = Weapons.Shredder;
+            this.speed = 4;
         }
 
         private delegate void MoveAction(List<IDrawableCustom> d);
