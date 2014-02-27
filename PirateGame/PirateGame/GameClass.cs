@@ -447,7 +447,10 @@ namespace PirateGame
             test.LoadContent();
             
             // TODO: remove the test
-            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
+            // add items 
+            Continent item1 = new Continent(this.Content, "cutlass", 500, 100, 250, 250);
+            //test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
+            test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(item1, this.OnPlay));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent2, this.OnPlay));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent3, this.OnPlay));
             test.Items.Add(new SelectableItem<Interfaces.IDrawableCustom>(this.continent1, this.OnPlay));
